@@ -29,20 +29,8 @@ public class User {
     @Column(name = "hashPassword")
     private String hashPassword;
 
-    @Column(name = "email")
-    private String email;
-
     @Column(name = "name")
     private String name;
-
-    @Column(name = "last_name")
-    private String lastName;
-
-    @Column(name = "age")
-    private int age;
-
-    @Column(name = "sex")
-    private String sex;
 
     @Enumerated(EnumType.STRING)
     private Role role;
