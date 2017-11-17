@@ -18,6 +18,7 @@ public class RegistrationController {
     @Autowired
     private RegistrationService registrationService;
 
+    @Autowired
     private UserRegistrationFormValidator userRegistrationFormValidator;
 
     @InitBinder("userForm")

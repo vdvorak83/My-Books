@@ -1,9 +1,9 @@
 <#ftl encoding='UTF-8'>
-<@layout title="${model.user.username} Profile Page">
+<@layout title="Books Catalog">
 <body>
 
-<img src="/static/img/user_default_profile_img.png" alt="profile image"/>
+<h1>Books list here</h1>
 
-<a href="/logout">Log out</a>
+
 </body>
 </@layout>
