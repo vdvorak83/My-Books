@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8">
             <ul class="nav nav-tabs nav-justified">
-                <li role="presentation">Currently Reading</li>
+                <li role="presentation"">Currently Reading</li>
                 <li role="presentation"><a href="#">Going to Read</a> </li>
                 <li role="presentation"><a href="#">Stopped Reading</a> </li>
                 <li role="presentation"><a href="#">Read</a> </li>
