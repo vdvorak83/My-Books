@@ -24,7 +24,7 @@
         <input type="password" name="password" id="password" placeholder="password"/>
         <input type="password" name="password_confirm" placeholder="repeat password"/>
         <button type="submit">sign up</button>
-        <p class="message">Already registered? <a href="/login">Sign nn</a></p>
+        <p class="message">Already registered? <a href="/login">Sign in</a></p>
     </form>
 </div>
 </body>

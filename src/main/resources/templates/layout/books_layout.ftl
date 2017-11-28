@@ -1,4 +1,4 @@
-<#macro layout title>
+<#macro books_layout title>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,12 +13,7 @@
 <nav class="navbar navbar-default">
     <div class="container">
         <ul class="nav navbar-nav">
-        <#--<div id="navbar" class="collapse navbar-collapse">
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" src="https://image.ibb.co/d9rok6/logo64x64.png">
-            </a>
-        </div>-->
-            <li><a href="/books">Catalog</a></li>
+            <li><a href="/user/profile">Profile</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                    aria-haspopup="true" aria-expanded="false">Browse <span class="caret"></span></a>
@@ -43,7 +38,18 @@
     </div>
     </div>
 </nav>
+
+<#--<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+    </div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>-->
+
     <#nested >
+
 </body>
 </html>
 </#macro>

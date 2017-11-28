@@ -1,5 +1,6 @@
 <#ftl encoding='UTF-8'>
-<@layout title="${model.user.username} Profile Page">
+<@layout title="${model.user.username}'s Profile Page">
+</@layout>
 <body>
 <div class="container">
     <div class="row">
@@ -40,4 +41,3 @@
 
 <#--<img src="/static/img/user_default_profile_img.png" alt="profile image"/>-->
 </body>
-</@layout>

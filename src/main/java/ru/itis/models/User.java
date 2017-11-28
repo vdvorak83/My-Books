@@ -1,7 +1,7 @@
 package ru.itis.models;
 
 import lombok.*;
-import ru.itis.security.role.Role;
+import ru.itis.security.enums.Role;
 
 import javax.persistence.*;
 

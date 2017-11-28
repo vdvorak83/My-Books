@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import ru.itis.forms.UserRegistrationForm;
 import ru.itis.models.User;
 import ru.itis.repositories.UsersRepository;
-import ru.itis.security.role.Role;
+import ru.itis.security.enums.Role;
 import ru.itis.services.RegistrationService;
 
 @Service
