@@ -1,6 +1,7 @@
 <#ftl encoding='UTF-8'>
-<@layout title="${model.user.username}'s Profile Page">
-</@layout>
+<#import "layout/application.ftl" as layout>
+<@layout.layout title="${model.user.username}'s Profile Page">
+</@layout.layout>
 <body>
 <div class="container">
     <div class="row">
