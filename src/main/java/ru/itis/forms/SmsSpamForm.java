@@ -9,11 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class UserRegistrationForm {
-    private String username;
-    private String password;
-    private String name;
-    private String email;
+public class SmsSpamForm {
     private String phone;
 }

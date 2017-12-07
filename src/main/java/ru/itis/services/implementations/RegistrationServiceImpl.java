@@ -22,6 +22,8 @@ public class RegistrationServiceImpl implements RegistrationService {
         User newUser = User.builder()
                 .name(userRegistrationForm.getName())
                 .username(userRegistrationForm.getUsername())
+                .email(userRegistrationForm.getEmail())
+                .phone(userRegistrationForm.getPhone())
                 .hashPassword(passwordEncoder.encode(userRegistrationForm.getPassword()))
                 .role(Role.USER)
                 .build();

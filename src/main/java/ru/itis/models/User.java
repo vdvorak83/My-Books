@@ -26,6 +26,12 @@ public class User {
     @Column(name = "username", unique = true)
     private String username;
 
+    @Column(name = "email", unique = true)
+    private String email;
+
+    @Column(name = "phone", unique = true)
+    private String phone;
+
     @Column(name = "hashPassword")
     private String hashPassword;
 

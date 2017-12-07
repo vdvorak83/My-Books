@@ -18,11 +18,13 @@
                 <img alt="Brand" src="https://image.ibb.co/d9rok6/logo64x64.png">
             </a>
         </div>-->
-            <li><a href="/books">Catalog</a></li>
+            <li><a href="/user/profile">Profile</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                    aria-haspopup="true" aria-expanded="false">Browse <span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                    <li><a href="/books">Catalog</a></li>
+                    <li role="separator" class="divider"></li>
                     <li><a href="/books/genres/classics">Classics</a></li>
                     <li><a href="/books/genres/historical-fiction">Historical Fiction</a></li>
                     <li><a href="/books/genres/mystery">Mystery</a></li>

@@ -21,6 +21,8 @@
     <form method="post" action="/signup">
         <input type="text" name="name" placeholder="name"/>
         <input type="text" name="username" placeholder="username"/>
+        <input type="text" name="email" placeholder="e-mail"/>
+        <input type="text" name="phone" placeholder="phone"/>
         <input type="password" name="password" id="password" placeholder="password"/>
         <input type="password" name="password_confirm" placeholder="repeat password"/>
         <button type="submit">sign up</button>
