@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.itis.forms.UserRegistrationForm;
 import ru.itis.services.RegistrationService;
+import ru.itis.utils.SmtpMailSender;
 import ru.itis.validators.UserRegistrationFormValidator;
 
 import javax.validation.Valid;
 
 @Controller
 public class RegistrationController {
+    @Autowired
+    SmtpMailSender mailSender;
+
     @Autowired
     private RegistrationService registrationService;
 
