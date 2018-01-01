@@ -1,0 +1,1 @@
+<h1 style="font-size: 5em">Password was sent to your e-mail</h1>

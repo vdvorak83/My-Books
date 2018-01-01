@@ -21,11 +21,11 @@ public class SmsSenderController {
 
     @GetMapping(value = "/sendsms")
     public String getSmsPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
-        if (authentication != null) {
+//        if (authentication != null) {
             return "sendsms";
-        }
+//        }
 
-        return "redirect:/";
+//        return "redirect:/";
     }
 
     @PostMapping(value = "/sendsms")

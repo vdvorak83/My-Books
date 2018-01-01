@@ -1,3 +1,4 @@
+/*
 package ru.itis.models;
 
 import lombok.Getter;
@@ -5,6 +6,7 @@ import lombok.Setter;
 import ru.itis.security.enums.BookStatus;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -14,11 +16,14 @@ import javax.persistence.*;
 public class UsersBooks {
     @Id
     @GeneratedValue
+    @NotNull
     private UsersBooksCompositeKey usersBooksCompositeKey;
 
+    @NotNull
     @Column(name = "users_book_rating")
     private Double bookRatingByUser;
 
+    @NotNull
     @Column(name = "book_rating")
     private Double bookRating;
 
@@ -26,3 +31,4 @@ public class UsersBooks {
     @Column(name = "book_status")
     private BookStatus bookStatus;
 }
+*/

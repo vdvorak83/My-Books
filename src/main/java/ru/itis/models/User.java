@@ -4,10 +4,12 @@ import lombok.*;
 import ru.itis.security.enums.Role;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @EqualsAndHashCode
 @ToString
@@ -15,10 +17,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-    public User() {
-
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -35,14 +33,15 @@ public class User {
     @Column(name = "hashPassword")
     private String hashPassword;
 
+    @Column(name = "hash_temp_password")
+    private String hashTempPassword;
+
     @Column(name = "name")
     private String name;
 
     @Enumerated(EnumType.STRING)
     private Role role;
-/*
-    @ManyToMany
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;*/
+
+    /*@EmbeddedId
+    private UsersBooksCompositeKey usersBooksCompositeKey;*/
 }

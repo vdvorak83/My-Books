@@ -54,6 +54,15 @@
             </div>
         </div>
     </div>
+
+    <#--<#list model.books as book>
+        <tr>
+            <td>${book.id}</td>
+            <td>${book.title}</td>
+            <td>${book.description}</td>
+            &lt;#&ndash;<td><a href="/admin/password/temp/${user.id}">Пароль</a></td>&ndash;&gt;
+        </tr>
+    </#list>-->
 </div>
 
 <#--

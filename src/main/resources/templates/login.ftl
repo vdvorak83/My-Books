@@ -3,7 +3,6 @@
     <title>Login</title>
 
     <link rel="stylesheet" href="../css/style.css">
-<#--<link rel="stylesheet" href="../css/style.scss">-->
 </head>
 <body>
 <div class="container">
@@ -26,7 +25,7 @@
             <div class="single-col">
                 <div class="styled-input-container">
                     <div class="styled-input-single">
-                        <input type="checkbox" name="fieldset-5" id="checkbox-example-one"/>
+                        <input type="checkbox" name="remember-me" id="checkbox-example-one"/>
                         <label for="checkbox-example-one">remember me</label>
                     </div>
                 </div>
