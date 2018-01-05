@@ -1,7 +1,5 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: head">
-    <title th:text="${model.user.username + '''s Profile Page'}"></title>
-
     <script>
         function sendFile(file) {
             var formData = new FormData();
@@ -35,8 +33,6 @@
             });
         });
     </script>
-
-    <link rel="stylesheet" href="../static/css/style.scss"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
@@ -75,6 +71,7 @@
         </div>
         <div class="col-md-4">
             <h1 class="text-center">
+                <!--/*@thymesVar id="user" type="ru.itis.models.User"*/-->
                 <span th:text="${model.user.username}"></span>
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal"
                         aria-label="Right Align">
@@ -102,7 +99,9 @@
                             Browse&hellip; <input type="file" id="file" name="file" style="display: none;"/>
                         </span>
                     </label>
-                    <input type="text" class="form-control"/>
+                    <label>
+                        <input type="text" class="form-control"/>
+                    </label>
                 </div>
             </div>
             <div class="modal-footer">
