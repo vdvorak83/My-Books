@@ -1,5 +1,6 @@
 package ru.itis.controllers;
 
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -26,25 +27,18 @@ public class BooksController {
     @Autowired
     BooksService booksService;
 
-    /*@GetMapping("/books")
-    public String getBooksPage(@ModelAttribute("model") ModelMap model, Authentication authentication,
-                               @RequestParam Optional<String> error) {
-        if (authentication != null) {
-            model.addAttribute(authenticationService.getUserByAuthentication(authentication));
-
-            return "books";
-        }
-
-        model.addAttribute("error", error);
-
-        return "redirect:/login";
-    }*/
-
     @GetMapping("/books")
     public String getBooksPage(@ModelAttribute("model") ModelMap model, Authentication authentication,
                                @RequestParam Optional<String> error) {
         if (authentication != null) {
             model.addAttribute(authenticationService.getUserByAuthentication(authentication));
+            model.addAttribute("booksList", booksService.getAllBooks());
+
+            try {
+                System.out.println(booksService.getAllBooks());
+            } catch (HibernateException hex) {
+                hex.printStackTrace();
+            }
 
             return "books";
         }

@@ -10,5 +10,6 @@ import java.util.Optional;
 public interface BooksRepository extends JpaRepository<Book, Integer> {
     List<Book> findAll();
     List<Book> findBookByTitle(String title);
-    List<Book> findBookByAuthor(Author author);
+    //List<Book> findBookByAuthor(Author author); //TODO
+    Book findBookByAuthorId(Integer id);
 }
