@@ -1,6 +1,7 @@
 package ru.itis.services;
 
 import ru.itis.models.Book;
+import ru.itis.models.User;
 
 import java.util.List;
 

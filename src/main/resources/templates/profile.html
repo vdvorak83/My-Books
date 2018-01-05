@@ -1,9 +1,7 @@
-<#ftl encoding='UTF-8'>
-<#import "layout/application.ftl" as layout>
-<@layout.layout title="${model.user.username}'s Profile Page">
-</@layout.layout>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+    <title th:text="${model.user.username + '''s Profile Page'}"></title>
 
-<head>
     <script>
         function sendFile(file) {
             var formData = new FormData();
@@ -17,8 +15,8 @@
             // We can attach the `fileselect` event to all file inputs on the page
             $(document).on('change', ':file', function () {
                 var input = $(this),
-                        numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
                 input.trigger('fileselect', [numFiles, label]);
             });
 
@@ -26,7 +24,7 @@
             $(document).ready(function () {
                 $(':file').on('fileselect', function (event, numFiles, label) {
                     var input = $(this).parents('.input-group').find(':text'),
-                            log = numFiles > 1 ? numFiles + ' files selected' : label;
+                        log = numFiles > 1 ? numFiles + ' files selected' : label;
 
                     if (input.length) {
                         input.val(log);
@@ -37,8 +35,11 @@
             });
         });
     </script>
+
+    <link rel="stylesheet" href="../static/css/style.scss"/>
 </head>
 <body>
+<div th:replace="fragments/header :: header"></div>
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -74,13 +75,13 @@
         </div>
         <div class="col-md-4">
             <h1 class="text-center">
-            ${model.user.username}
+                <span th:text="${model.user.username}"></span>
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal"
                         aria-label="Right Align">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 </button>
             </h1>
-            <img src="https://i.imgur.com/I87f7fI.png" alt="profile image" class="img-thumbnail center-block">
+            <img src="https://i.imgur.com/I87f7fI.png" class="img-thumbnail center-block"/>
 
         </div>
     </div>
@@ -88,8 +89,6 @@
 
 <div id="modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
-        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -100,16 +99,17 @@
                 <div class="input-group">
                     <label class="input-group-btn">
                         <span class="btn btn-primary">
-                            Browse&hellip; <input type="file" id="file" name="file" style="display: none;" multiple>
+                            Browse&hellip; <input type="file" id="file" name="file" style="display: none;"/>
                         </span>
                     </label>
-                    <input type="text" class="form-control" readonly>
+                    <input type="text" class="form-control"/>
                 </div>
             </div>
             <div class="modal-footer">
                 <label class="btn btn-primary">
                     <span class="glyphicon glyphicon-cloud-upload"></span>
-                    Upload<input type="submit" id="submit" style="display: none;" onclick="sendFile(($('#file'))[0]['files'][0])" data-dismiss="modal">
+                    Upload<input type="submit" id="submit" style="display: none;"
+                                 onclick="sendFile(($('#file'))[0]['files'][0])" data-dismiss="modal"/>
                 </label>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
@@ -117,7 +117,5 @@
 
     </div>
 </div>
-
-
-<#--<img src="/static/img/user_default_profile_img.png" alt="profile image"/>-->
 </body>
+</html>

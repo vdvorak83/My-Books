@@ -18,7 +18,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
-    public void register(UserRegistrationForm userRegistrationForm) {
+    public User register(UserRegistrationForm userRegistrationForm) {
         User newUser = User.builder()
                 .name(userRegistrationForm.getName())
                 .username(userRegistrationForm.getUsername())
@@ -29,5 +29,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .build();
 
         usersRepository.save(newUser);
+
+        return newUser;
     }
 }

@@ -1,27 +1,20 @@
 package ru.itis.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.itis.forms.UserRegistrationForm;
 import ru.itis.services.RegistrationService;
-import ru.itis.utils.SmtpMailSender;
 import ru.itis.validators.UserRegistrationFormValidator;
 
 import javax.validation.Valid;
 
 @Controller
 public class RegistrationController {
-    @Autowired
-    SmtpMailSender mailSender;
-
     @Autowired
     private RegistrationService registrationService;
 

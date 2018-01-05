@@ -1,16 +1,13 @@
 package ru.itis.services.implementations;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.itis.models.Book;
 import ru.itis.services.UsersService;
 
 import java.util.List;
 
+@Service
 public class UsersServiceImpl implements UsersService {
-    @Autowired
-    private SessionFactory sessionFactory;
-
     @Override
     public void setBookStatusAsCurrentlyReading() {
 

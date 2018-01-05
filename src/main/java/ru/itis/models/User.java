@@ -4,12 +4,10 @@ import lombok.*;
 import ru.itis.security.enums.Role;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @EqualsAndHashCode
 @ToString
@@ -17,6 +15,9 @@ import java.io.Serializable;
 @Entity
 @Table(name = "users")
 public class User {
+    public User() {
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -42,6 +43,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    /*@EmbeddedId
-    private UsersBooksCompositeKey usersBooksCompositeKey;*/
+    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "books")
+    private Set<Book> books;*/
 }

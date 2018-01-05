@@ -1,7 +1,8 @@
 package ru.itis.services;
 
 import ru.itis.forms.UserRegistrationForm;
+import ru.itis.models.User;
 
 public interface RegistrationService {
-    void register(UserRegistrationForm userRegistrationForm);
+    User register(UserRegistrationForm userRegistrationForm);
 }

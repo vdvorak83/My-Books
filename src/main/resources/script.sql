@@ -53,7 +53,7 @@ BEGIN
     THEN
       user_info = NEW.email;
       message := 'Update user ';
-      log_str := message || astr;
+      log_str := message || log_str;
       INSERT INTO logs (text, date) VALUES (log_str, NOW());
       RETURN NEW;
   ELSIF TG_OP = 'DELETE'
