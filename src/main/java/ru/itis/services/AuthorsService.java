@@ -1,5 +1,10 @@
 package ru.itis.services;
 
-public interface AuthorsService {
+import ru.itis.models.Author;
 
+import java.util.List;
+
+public interface AuthorsService {
+    List<Author> getAllAuthors();
+    Author getAuthorById(Integer id);
 }

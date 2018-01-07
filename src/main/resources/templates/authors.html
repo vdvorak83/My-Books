@@ -1,25 +1,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: head">
+<head th:include="fragments/header :: head">
     <title>Authors</title>
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
-<div class="row">
-    <div class="col-md-2 col-md-offset-1">
+<div th:include="fragments/header :: header"></div>
+<div th:if="${not #lists.isEmpty(model.authorsList)}" class="row">
+    <div th:each="author, iterStat : ${model.authorsList}"
+         th:class="${iterStat.index % 5 == 0} ? 'col-md-2 col-md-offset-1' : 'col-md-2'">
         <div class="thumbnail">
-            <img src="https://s.gr-assets.com/assets/nophoto/user/m_200x266-d279b33f8eec0f27b7272477f09806be.png" alt="..." />
+            <img src="https://images.gr-assets.com/books/1368340919l/4778183.jpg" alt="..."/>
             <div class="caption">
-                <h3>Юрий Мамлеев</h3>
-                <p><a href="#" class="btn btn-primary" role="button">Follow</a> <a href="#" class="btn btn-default" role="button">Favorite</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="thumbnail">
-            <img src="https://s.gr-assets.com/assets/nophoto/user/m_200x266-d279b33f8eec0f27b7272477f09806be.png" alt="..." />
-            <div class="caption">
-                <h3>George Orwell</h3>
-                <p><a href="#" class="btn btn-primary" role="button">Follow</a> <a href="#" class="btn btn-default" role="button">Favorite</a></p>
+                <h3 th:text="${author.name} + ' ' + ${author.lastName.charAt(0)} + '.'">Title</h3>
+                <p th:text="${author.dateOfBirth} + ' - ' + ${author.dateOfDeath}"></p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
+                                                                                   role="button">Button</a></p>
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -29,10 +29,10 @@ public class Author {
     private String lastName;
 
     @Column(name = "date_of_birth")
-    private Date dateOfBirth;
+    private Integer dateOfBirth;
 
     @Column(name = "date_of_death")
-    private Date dateOfDeath;
+    private Integer dateOfDeath;
 
 
     //private List writtenBooks;

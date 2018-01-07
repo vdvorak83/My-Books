@@ -8,19 +8,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.itis.services.AuthenticationService;
+import ru.itis.services.AuthorsService;
 
 import java.util.Optional;
 
 @Controller
 public class AuthorsController {
     @Autowired
-    AuthenticationService authenticationService;
+    private AuthenticationService authenticationService;
+
+    @Autowired
+    private AuthorsService authorsService;
 
     @GetMapping("/authors")
     public String getBooksPage(@ModelAttribute("model") ModelMap model, Authentication authentication,
                                @RequestParam Optional<String> error) {
         if (authentication != null) {
             model.addAttribute(authenticationService.getUserByAuthentication(authentication));
+            model.addAttribute("authorsList", authorsService.getAllAuthors());
 
             return "authors";
         }

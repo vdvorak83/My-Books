@@ -9,23 +9,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.itis.models.Book;
-import ru.itis.repositories.BooksRepository;
 import ru.itis.services.AuthenticationService;
+import ru.itis.services.AuthorsService;
 import ru.itis.services.BooksService;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class BooksController {
     @Autowired
-    AuthenticationService authenticationService;
+    private AuthenticationService authenticationService;
 
     @Autowired
-    BooksRepository booksRepository;
+    private AuthorsService authorsService;
 
     @Autowired
-    BooksService booksService;
+    private BooksService booksService;
 
     @GetMapping("/books")
     public String getBooksPage(@ModelAttribute("model") ModelMap model, Authentication authentication,
@@ -33,19 +32,11 @@ public class BooksController {
         if (authentication != null) {
             model.addAttribute(authenticationService.getUserByAuthentication(authentication));
             model.addAttribute("booksList", booksService.getAllBooks());
-
-            try {
-                System.out.println(booksService.getAllBooks());
-            } catch (HibernateException hex) {
-                hex.printStackTrace();
-            }
+            model.addAttribute("authors", authorsService);
 
             return "books";
         }
 
-        //List<Book> bookList = booksRepository.findAll();
-
-        model.addAttribute("books", booksService.getAllBooks());
         model.addAttribute("error", error);
 
         return "redirect:/login";
