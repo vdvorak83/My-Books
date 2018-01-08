@@ -29,8 +29,6 @@ public class AdminController {
         model.addAttribute("users", adminService.getAllUsers());
         model.addAttribute(authenticationService.getUserByAuthentication(authentication));
 
-        System.out.println(adminService.getAllUsers());
-
         return "admin";
     }
 

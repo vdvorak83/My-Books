@@ -97,11 +97,11 @@ CREATE TABLE authors
 
 ALTER TABLE books
   ADD CONSTRAINT fk_books
-FOREIGN KEY (author_id) REFERENCES authors;
+FOREIGN KEY (book_author) REFERENCES authors;
 
 ALTER TABLE books
   ADD CONSTRAINT fkfjixh2vym2cvfj3ufxj91jem7
-FOREIGN KEY (author_id) REFERENCES authors;
+FOREIGN KEY (book_author) REFERENCES authors;
 
 CREATE TABLE books_rating
 (
@@ -181,7 +181,7 @@ CREATE VIEW view_all_authors_books AS
     res.description,
     res.rating
   FROM ((SELECT
-           b.author_id,
+           b.book_author,
            b.title,
            b.description,
            b.rating

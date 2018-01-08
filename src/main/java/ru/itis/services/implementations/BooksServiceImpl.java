@@ -20,8 +20,8 @@ public class BooksServiceImpl implements BooksService {
         return booksRepository.findAll();
     }
 
-    @Override
+    /*@Override
     public Book getBookByAuthorId(Integer id) {
         return booksRepository.findBookByAuthorId(id);
-    }
+    }*/
 }

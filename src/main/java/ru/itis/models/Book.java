@@ -21,9 +21,6 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "author_id")
-    private Integer authorId;
-
     @Column(name = "title")
     private String title;
 
@@ -34,5 +31,5 @@ public class Book {
     private double rating;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Author bookAuthor;
+    private Author book_author;
 }

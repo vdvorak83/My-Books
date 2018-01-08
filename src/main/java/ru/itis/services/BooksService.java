@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface BooksService {
     List<Book> getAllBooks();
-    Book getBookByAuthorId(Integer id);
+    //Book getBookByAuthorId(Integer id);
 }
