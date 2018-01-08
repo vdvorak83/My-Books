@@ -7,6 +7,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.itis.models.User;
+import ru.itis.security.enums.Role;
 import ru.itis.services.AuthenticationService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +43,13 @@ public class AuthenticationController {
     @GetMapping("/")
     public String root(Authentication authentication) {
         if (authentication != null) {
-            return "redirect:/user/profile";
+            User user = authenticationService.getUserByAuthentication(authentication);
+
+            if (user.getRole().equals(Role.USER)) {
+                return "redirect:/user/profile";
+            } else if (user.getRole().equals(Role.ADMIN)) {
+                return "redirect:/admin/users";
+            }
         }
 
         return "redirect:/login";

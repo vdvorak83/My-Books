@@ -11,12 +11,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import ru.itis.models.User;
 import ru.itis.repositories.UsersRepository;
 
 import java.util.Collection;
 import java.util.Optional;
 
+@Component
 public class AuthProvider implements AuthenticationProvider {
     @Autowired
     UsersRepository usersRepository;

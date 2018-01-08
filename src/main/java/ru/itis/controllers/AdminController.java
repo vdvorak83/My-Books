@@ -24,6 +24,11 @@ public class AdminController {
     @Autowired
     AuthenticationService authenticationService;
 
+    @GetMapping
+    public String redirectToMainAdminPage() {
+        return "redirect:/admin/users";
+    }
+
     @GetMapping("/users")
     public String getMainAdminPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
         model.addAttribute("users", adminService.getAllUsers());
@@ -33,8 +38,10 @@ public class AdminController {
     }
 
     @GetMapping("/password/temp/{user-id}")
-    public String getNewPasswordOfUser(@ModelAttribute("model") ModelMap model, @PathVariable("user-id") Integer id) {
-        adminService.createTempPassword(id);
+    public String getNewPasswordOfUser(@ModelAttribute("model") ModelMap model, Authentication authentication,
+                                       @PathVariable("user-id") Integer id) {
+        model.addAttribute("user", authenticationService.getUserByAuthentication(authentication));
+        model.addAttribute("tempPassword", adminService.createTempPassword(id));
 
         return "temp-password";
     }

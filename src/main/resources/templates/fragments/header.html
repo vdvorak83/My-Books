@@ -34,11 +34,13 @@
             <li><a th:href="@{/authors}">Authors</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li>
+            <!--НЕ РАБОТАЕТ-->
+            <!--<li sec:authorize="hasRole('ROLE_ADMIN')">
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <a th:href="@{/admin/users}">Admin Panel</a>
                 </sec:authorize>
-            </li>
+            </li>-->
+            <!--НЕ РАБОТАЕТ-->
             <li><p class="navbar-text">Signed in as
                 <a th:href="@{/user/profile}" class="navbar-link" th:text="${model.user.username}"></a></p>
             </li>
