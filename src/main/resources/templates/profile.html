@@ -1,6 +1,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:replace="fragments/header :: head">
+<head>
+    <div th:replace="fragments/header :: head"></div>
+    <title th:text="${model.user.username} + ' profile page'"></title>
     <script>
         function sendFile(file) {
             var formData = new FormData();
@@ -100,9 +102,7 @@
                             Browse&hellip; <input type="file" id="file" name="file" style="display: none;"/>
                         </span>
                     </label>
-                    <label>
-                        <input type="text" class="form-control"/>
-                    </label>
+                    <input type="text" class="form-control"/>
                 </div>
             </div>
             <div class="modal-footer">

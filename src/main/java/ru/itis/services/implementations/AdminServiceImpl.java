@@ -33,7 +33,6 @@ public class AdminServiceImpl implements AdminService {
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
-
     @Override
     public List<User> getAllUsers() {
         return usersRepository.findAllByRole(Role.USER);
@@ -51,7 +50,6 @@ public class AdminServiceImpl implements AdminService {
         User user = existedUser.get();
         String tempPassword = passwordGenerator.generate();
 
-        //TODO (нихуя блядь не работают ебучие пароли)
         user.setHashTempPassword(passwordEncoder.encode(tempPassword));
         usersRepository.save(user);
 
