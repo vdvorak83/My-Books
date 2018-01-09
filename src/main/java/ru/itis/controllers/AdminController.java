@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.itis.models.Book;
 import ru.itis.models.User;
 import ru.itis.services.AdminService;
 import ru.itis.services.AuthenticationService;
+import ru.itis.services.BooksService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +21,13 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    AdminService adminService;
+    private AdminService adminService;
 
     @Autowired
-    AuthenticationService authenticationService;
+    private BooksService booksService;
+
+    @Autowired
+    private AuthenticationService authenticationService;
 
     @GetMapping
     public String redirectToMainAdminPage() {
@@ -30,7 +35,7 @@ public class AdminController {
     }
 
     @GetMapping("/users")
-    public String getMainAdminPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
+    public String getUsersAdminPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
         model.addAttribute("users", adminService.getAllUsers());
         model.addAttribute(authenticationService.getUserByAuthentication(authentication));
 
@@ -44,5 +49,17 @@ public class AdminController {
         model.addAttribute("tempPassword", adminService.createTempPassword(id));
 
         return "temp-password";
+    }
+
+    @GetMapping("/books")
+    public String getBooksAdminPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
+        model.addAttribute("books", booksService.getAllBooks());
+        model.addAttribute(authenticationService.getUserByAuthentication(authentication));
+
+        for (Book book : booksService.getAllBooks()) {
+            System.out.println(book.getTitle() + " by " + book.getBookAuthor().getName() + " " + book.getBookAuthor().getLastName());
+        }
+
+        return "admin-books";
     }
 }

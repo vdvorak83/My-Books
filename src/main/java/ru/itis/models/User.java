@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @EqualsAndHashCode
 @ToString
@@ -15,9 +16,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-    public User() {
-
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

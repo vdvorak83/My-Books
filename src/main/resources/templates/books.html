@@ -11,8 +11,8 @@
         <div class="thumbnail">
             <img src="https://images.gr-assets.com/books/1368340919l/4778183.jpg" alt="..."/>
             <div class="caption">
-                <h3 th:text="${book.title}">Title</h3>
-                <p th:text="${book.book_author.name} + ' ' + ${book.book_author.lastName}">Author's name here</p>
+                <h3 th:text="${book.getTitle()}">Title</h3>
+                <p th:text="${book.getBookAuthor().getName()} + ' ' + ${book.getBookAuthor().getLastName()}">Author's name here</p>
                 <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
                                                                                    role="button">Button</a></p>
             </div>

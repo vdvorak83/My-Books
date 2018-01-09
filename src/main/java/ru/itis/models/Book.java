@@ -31,5 +31,5 @@ public class Book {
     private double rating;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Author book_author;
+    private Author bookAuthor;
 }
