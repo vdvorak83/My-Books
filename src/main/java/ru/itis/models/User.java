@@ -41,6 +41,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+
+
     /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "books")
     private Set<Book> books;*/
 }

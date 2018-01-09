@@ -1,5 +1,5 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+>
 <head>
     <div th:replace="fragments/header :: head"></div>
     <title th:text="${model.user.username} + ' profile page'"></title>
@@ -52,8 +52,13 @@
             <div class="tab-content">
                 <div id="reading" class="tab-pane fade in active">
                     <h3>Currently Reading</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
+                    <span th:if="${not #lists.isEmpty(model.usersBooks)}">
+                        <span th:each="books : ${model.usersBooks}">
+                            <p th:if="${books.getBookStatus() == 'READING'}" th:text="${books.getBook().getTitle()} + ' by ' +
+                               ${books.getBook().getBookAuthor().getName()} + ' ' +
+                               ${books.getBook().getBookAuthor().getLastName()}"></p>
+                        </span>
+                    </span>
                 </div>
                 <div id="going-to" class="tab-pane fade">
                     <h3>Going to Read</h3>

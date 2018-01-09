@@ -5,6 +5,6 @@ import ru.itis.models.UsersBooks;
 
 import java.util.List;
 
-public interface UsersService {
-
+public interface UsersBooksService {
+    List<UsersBooks> getUsersBooksByUser(User user);
 }
