@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 >
 <head>
-    <div th:replace="fragments/header :: head"></div>
+    <div th:include="fragments/header :: head"></div>
     <title th:text="${model.user.username} + ' profile page'"></title>
     <script>
         function sendFile(file) {
@@ -54,26 +54,49 @@
                     <h3>Currently Reading</h3>
                     <span th:if="${not #lists.isEmpty(model.usersBooks)}">
                         <span th:each="books : ${model.usersBooks}">
-                            <p th:if="${books.getBookStatus() == 'READING'}" th:text="${books.getBook().getTitle()} + ' by ' +
+                            <span th:if="${#strings.equals(books.getBookStatus(), 'READING')}">
+                                <p th:text="${books.getBook().getTitle()} + ' by ' +
                                ${books.getBook().getBookAuthor().getName()} + ' ' +
                                ${books.getBook().getBookAuthor().getLastName()}"></p>
+                            </span>
                         </span>
                     </span>
                 </div>
                 <div id="going-to" class="tab-pane fade">
                     <h3>Going to Read</h3>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.</p>
+                    <span th:if="${not #lists.isEmpty(model.usersBooks)}">
+                        <span th:each="books : ${model.usersBooks}">
+                            <span th:if="${#strings.equals(books.getBookStatus(), 'TO_READ')}">
+                                <p th:text="${books.getBook().getTitle()} + ' by ' +
+                               ${books.getBook().getBookAuthor().getName()} + ' ' +
+                               ${books.getBook().getBookAuthor().getLastName()}"></p>
+                            </span>
+                        </span>
+                    </span>
                 </div>
                 <div id="stopped" class="tab-pane fade">
                     <h3>Stopped Reading</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                        totam rem aperiam.</p>
+                    <span th:if="${not #lists.isEmpty(model.usersBooks)}">
+                        <span th:each="books : ${model.usersBooks}">
+                            <span th:if="${#strings.equals(books.getBookStatus(), 'STOPPED_READING')}">
+                                <p th:text="${books.getBook().getTitle()} + ' by ' +
+                               ${books.getBook().getBookAuthor().getName()} + ' ' +
+                               ${books.getBook().getBookAuthor().getLastName()}"></p>
+                            </span>
+                        </span>
+                    </span>
                 </div>
                 <div id="read" class="tab-pane fade">
                     <h3>Read</h3>
-                    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                        explicabo.</p>
+                    <span th:if="${not #lists.isEmpty(model.usersBooks)}">
+                        <span th:each="books : ${model.usersBooks}">
+                            <span th:if="${#strings.equals(books.getBookStatus(), 'READ')}">
+                                <p th:text="${books.getBook().getTitle()} + ' by ' +
+                               ${books.getBook().getBookAuthor().getName()} + ' ' +
+                               ${books.getBook().getBookAuthor().getLastName()}"></p>
+                            </span>
+                        </span>
+                    </span>
                 </div>
             </div>
         </div>

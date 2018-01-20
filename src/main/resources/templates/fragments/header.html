@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <div th:fragment="head">
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"/>
-        <link rel="stylesheet" href="../../static/css/style.css"/>
+        <link rel="stylesheet" th:href="@{../../static/css/style.css}"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </div>
@@ -17,30 +17,14 @@
 <nav class="navbar navbar-default">
     <div class="container">
         <ul class="nav navbar-nav">
-            <li><a href="/user/profile">Profile</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                   aria-haspopup="true" aria-expanded="false">Browse <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/books">Catalog</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="/books/genres/classics">Classics</a></li>
-                    <li><a href="/books/genres/historical-fiction">Historical Fiction</a></li>
-                    <li><a href="/books/genres/mystery">Mystery</a></li>
-                    <li><a href="/books/genres/philosophy">Philosophy</a></li>
-                    <li><a href="/books/genres/science-fiction">Science Fiction</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="/books/genres/all">All Genres</a></li>
-                </ul>
-            </li>
+            <li><a th:href="@{/user/profile}">Profile</a></li>
+            <li><a th:href="@{/books}">Books</a></li>
             <li><a th:href="@{/authors}">Authors</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <!--НЕ РАБОТАЕТ-->
-            <!--<li sec:authorize="hasRole('ROLE_ADMIN')">
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <a th:href="@{/admin/users}">Admin Panel</a>
-                </sec:authorize>
+            <!--<li>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/users}">Admin Panel</a>
             </li>-->
             <!--НЕ РАБОТАЕТ-->
             <li><p class="navbar-text">Signed in as

@@ -26,22 +26,22 @@ public class RegistrationController {
         binder.addValidators(userRegistrationFormValidator);
     }
 
-    @GetMapping(value = "/signup")
+    @GetMapping(value = "/register")
     public String signUp(Authentication authentication) {
         if (authentication != null) {
             return "redirect:/";
         }
 
-        return "signup";
+        return "register";
     }
 
-    @PostMapping(value = "/signup")
+    @PostMapping(value = "/register")
     public String signUp(@Valid @ModelAttribute ("userForm") UserRegistrationForm userRegistrationForm,
                          BindingResult errors, RedirectAttributes redirectAttributes) {
         if (errors.hasErrors()) {
             redirectAttributes.addFlashAttribute("error", errors.getAllErrors().get(0).getDefaultMessage());
 
-            return "redirect:/signup";
+            return "redirect:/register";
         }
 
         registrationService.register(userRegistrationForm);

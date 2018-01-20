@@ -9,15 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.itis.models.Book;
-import ru.itis.models.User;
 import ru.itis.models.UsersBooks;
 import ru.itis.services.AdminService;
 import ru.itis.services.AuthenticationService;
 import ru.itis.services.BooksService;
 import ru.itis.services.UsersBooksService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/admin")

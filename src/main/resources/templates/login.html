@@ -1,4 +1,4 @@
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
 
@@ -18,7 +18,7 @@
 </#if>-->
 
 <div class="form">
-    <form class="login-form" method="post" action="/login">
+    <form class="login-form" method="post">
         <input type="text" name="login" placeholder="username"/>
         <input type="password" name="password" placeholder="password"/>
         <div class="two-column">
@@ -32,7 +32,7 @@
             </div>
         </div>
         <button type="submit">log in</button>
-        <p class="message">Not registered? <a href="/signup">Create an account</a></p>
+        <p class="message">Not registered? <a th:href="@{/register}">Create an account</a></p>
     </form>
 </div>
 </body>
