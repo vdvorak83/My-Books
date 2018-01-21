@@ -1,5 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:include="fragments/header :: head"></div>
     <title th:text="${model.user.username} + ' profile page'"></title>
@@ -55,9 +54,10 @@
                     <span th:if="${not #lists.isEmpty(model.usersBooks)}">
                         <span th:each="books : ${model.usersBooks}">
                             <span th:if="${#strings.equals(books.getBookStatus(), 'READING')}">
-                                <p th:text="${books.getBook().getTitle()} + ' by ' +
+                                <a th:href="@{'/books/' + ${books.getBook().getId()}}"><span th:text="${books.getBook().getTitle()}"></span></a>
+                                <span th:text="' by ' +
                                ${books.getBook().getBookAuthor().getName()} + ' ' +
-                               ${books.getBook().getBookAuthor().getLastName()}"></p>
+                               ${books.getBook().getBookAuthor().getLastName()}"></span>
                             </span>
                         </span>
                     </span>
@@ -67,9 +67,10 @@
                     <span th:if="${not #lists.isEmpty(model.usersBooks)}">
                         <span th:each="books : ${model.usersBooks}">
                             <span th:if="${#strings.equals(books.getBookStatus(), 'TO_READ')}">
-                                <p th:text="${books.getBook().getTitle()} + ' by ' +
+                                <a th:href="@{'/books/' + ${books.getBook().getId()}}"><span th:text="${books.getBook().getTitle()}"></span></a>
+                                <span th:text="' by ' +
                                ${books.getBook().getBookAuthor().getName()} + ' ' +
-                               ${books.getBook().getBookAuthor().getLastName()}"></p>
+                               ${books.getBook().getBookAuthor().getLastName()}"></span>
                             </span>
                         </span>
                     </span>
@@ -79,9 +80,10 @@
                     <span th:if="${not #lists.isEmpty(model.usersBooks)}">
                         <span th:each="books : ${model.usersBooks}">
                             <span th:if="${#strings.equals(books.getBookStatus(), 'STOPPED_READING')}">
-                                <p th:text="${books.getBook().getTitle()} + ' by ' +
+                                <a th:href="@{'/books/' + ${books.getBook().getId()}}"><span th:text="${books.getBook().getTitle()}"></span></a>
+                                <span th:text="' by ' +
                                ${books.getBook().getBookAuthor().getName()} + ' ' +
-                               ${books.getBook().getBookAuthor().getLastName()}"></p>
+                               ${books.getBook().getBookAuthor().getLastName()}"></span>
                             </span>
                         </span>
                     </span>
@@ -91,9 +93,10 @@
                     <span th:if="${not #lists.isEmpty(model.usersBooks)}">
                         <span th:each="books : ${model.usersBooks}">
                             <span th:if="${#strings.equals(books.getBookStatus(), 'READ')}">
-                                <p th:text="${books.getBook().getTitle()} + ' by ' +
+                                <a th:href="@{'/books/' + ${books.getBook().getId()}}"><span th:text="${books.getBook().getTitle()}"></span></a>
+                                <span th:text="' by ' +
                                ${books.getBook().getBookAuthor().getName()} + ' ' +
-                               ${books.getBook().getBookAuthor().getLastName()}"></p>
+                               ${books.getBook().getBookAuthor().getLastName()}"></span>
                             </span>
                         </span>
                     </span>

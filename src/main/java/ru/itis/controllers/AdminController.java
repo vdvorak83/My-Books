@@ -27,9 +27,6 @@ public class AdminController {
     @Autowired
     private BooksService booksService;
 
-    @Autowired
-    private UsersBooksService usersBooksService;
-
     @GetMapping
     public String redirectToMainAdminPage() {
         return "redirect:/admin/users";
@@ -39,12 +36,6 @@ public class AdminController {
     public String getUsersAdminPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
         model.addAttribute("users", adminService.getAllUsers());
         model.addAttribute(authenticationService.getUserByAuthentication(authentication));
-
-        for (UsersBooks usersBooks : usersBooksService.getUsersBooksByUser(authenticationService.getUserByAuthentication(authentication))) {
-            System.out.println(usersBooks.getBookStatus() + usersBooks.getUser().getUsername() + " : " +
-                    usersBooks.getBook().getBookAuthor().getName() + " " +
-                    usersBooks.getBook().getBookAuthor().getLastName());
-        }
 
         return "admin";
     }
@@ -62,10 +53,6 @@ public class AdminController {
     public String getBooksAdminPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
         model.addAttribute("books", booksService.getAllBooks());
         model.addAttribute(authenticationService.getUserByAuthentication(authentication));
-
-        for (Book book : booksService.getAllBooks()) {
-            System.out.println(book.getTitle() + " by " + book.getBookAuthor().getName() + " " + book.getBookAuthor().getLastName());
-        }
 
         return "admin-books";
     }

@@ -39,6 +39,7 @@ public class BooksController {
                                         @PathVariable("book-id") Integer id) {
         if (authentication != null) {
             model.addAttribute(authenticationService.getUserByAuthentication(authentication));
+            model.addAttribute("book", booksService.getBookById(id));
 
             return "book-page";
         }
