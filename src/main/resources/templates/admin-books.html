@@ -8,7 +8,8 @@
 <div>
     <div class="container">
         <div th:if="${not #lists.isEmpty(model.books)}">
-            <h2>Books List</h2>
+            <h3><a th:href="@{/admin/users}">Users</a> | Books | <a th:href="@{/admin/authors}">Authors</a></h3>
+            <hr />
             <table id="books-table" class="table table-striped table-bordered">
                 <thead>
                 <tr>

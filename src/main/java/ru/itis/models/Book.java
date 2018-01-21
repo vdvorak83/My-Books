@@ -1,10 +1,9 @@
 package ru.itis.models;
 
 import lombok.*;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
 
 @Getter
 @Setter
@@ -29,6 +28,10 @@ public class Book {
 
     @Column(name = "rating")
     private double rating;
+
+    @Column(name = "photo_path")
+    @Value("storage.path")
+    private String photoPath;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Author bookAuthor;

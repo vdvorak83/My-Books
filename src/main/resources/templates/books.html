@@ -8,13 +8,23 @@
 <div th:if="${not #lists.isEmpty(model.booksList)}" class="row">
     <div th:each="book, iterStat : ${model.booksList}"
          th:class="${iterStat.index % 5 == 0} ? 'col-md-2 col-md-offset-1' : 'col-md-2'">
-        <div class="thumbnail">
-            <img src="https://images.gr-assets.com/books/1368340919l/4778183.jpg" alt="..."/>
+        <div class="thumbnail" style="margin-bottom: 10px">
+            <a th:href="@{'/books/' + ${book.getId()}}"><img th:src="@{'/storage/' + ${book.getPhotoPath()}}"/></a>
             <div class="caption">
-                <h3 th:text="${book.getTitle()}">Title</h3>
-                <p th:text="${book.getBookAuthor().getName()} + ' ' + ${book.getBookAuthor().getLastName()}">Author's name here</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
-                                                                                   role="button">Button</a></p>
+                <a th:href="@{'/books/' + ${book.getId()}}"><h3 th:text="${book.getTitle()}">Title</h3></a>
+                <a th:href="@{'authors/' + ${book.getBookAuthor().getId()}}"><p th:text="${book.getBookAuthor().getName()} + ' ' + ${book.getBookAuthor().getLastName()}">Author's
+                    name here</p></a>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">To-Read</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Read</a></li>
+                        <li><a href="#">Reading</a></li>
+                        <li><a href="#">Stopped Reading</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

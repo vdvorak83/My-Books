@@ -2,6 +2,9 @@
 <head>
     <div th:include="fragments/header :: head"></div>
     <title>Authors</title>
+    <style>
+
+    </style>
 </head>
 <body>
 <div th:include="fragments/header :: header"></div>
@@ -9,7 +12,7 @@
     <div th:each="author, iterStat : ${model.authorsList}"
          th:class="${iterStat.index % 5 == 0} ? 'col-md-2 col-md-offset-1' : 'col-md-2'">
         <div class="thumbnail">
-            <img src="https://images.gr-assets.com/books/1368340919l/4778183.jpg" alt="..."/>
+            <img th:src="@{'/storage/' + ${author.getPhotoPath()}}"/>
             <div class="caption">
                 <h3 th:text="${author.name} + ' ' + ${author.lastName.charAt(0)} + '.'">Title</h3>
                 <p th:text="${author.dateOfBirth} + ' - ' + ${author.dateOfDeath}"></p>

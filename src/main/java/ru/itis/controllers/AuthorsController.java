@@ -40,6 +40,7 @@ public class AuthorsController {
                                         @PathVariable("author-id") Integer id) {
         if (authentication != null) {
             model.addAttribute(authenticationService.getUserByAuthentication(authentication));
+            model.addAttribute("author", authorsService.getAuthorById(id));
 
             return "author-page";
         }
