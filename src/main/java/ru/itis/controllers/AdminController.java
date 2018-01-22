@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.itis.models.Book;
 import ru.itis.models.UsersBooks;
-import ru.itis.services.AdminService;
-import ru.itis.services.AuthenticationService;
-import ru.itis.services.BooksService;
-import ru.itis.services.UsersBooksService;
+import ru.itis.services.*;
+import ru.itis.services.implementations.BooksServiceImpl;
 
 @Controller
 @RequestMapping("/admin")
@@ -23,6 +21,9 @@ public class AdminController {
 
     @Autowired
     private AuthenticationService authenticationService;
+
+    @Autowired
+    private AuthorsService authorsService;
 
     @Autowired
     private BooksService booksService;
@@ -55,5 +56,19 @@ public class AdminController {
         model.addAttribute(authenticationService.getUserByAuthentication(authentication));
 
         return "admin-books";
+    }
+
+    @GetMapping("/authors")
+    public String getAuthorsAdminPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
+        model.addAttribute("authors", authorsService.getAllAuthors());
+        model.addAttribute(authenticationService.getUserByAuthentication(authentication));
+        model.addAttribute("booksService", booksService);
+
+        for (Book book : booksService.getBooksByBookAuthor(authorsService.getAuthorById(1))) {
+            System.out.println(book.getTitle() + " by " + book.getBookAuthor().getName() + " "
+                    + book.getBookAuthor().getLastName());
+        }
+
+        return "admin-authors";
     }
 }

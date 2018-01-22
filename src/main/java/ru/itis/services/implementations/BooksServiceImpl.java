@@ -4,6 +4,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.itis.models.Author;
 import ru.itis.models.Book;
 import ru.itis.repositories.BooksRepository;
 import ru.itis.services.BooksService;
@@ -23,6 +24,11 @@ public class BooksServiceImpl implements BooksService {
     @Override
     public List<Book> getAllBooks() {
         return booksRepository.findAll();
+    }
+
+    @Override
+    public List<Book> getBooksByBookAuthor(Author author) {
+        return booksRepository.findBooksByBookAuthor(author);
     }
 
     /*@Override
