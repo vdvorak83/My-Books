@@ -9,7 +9,7 @@
     <div th:each="book, iterStat : ${model.booksList}"
          th:class="${iterStat.index % 5 == 0} ? 'col-md-2 col-md-offset-1' : 'col-md-2'">
         <div class="thumbnail" style="margin-bottom: 10px">
-            <a th:href="@{'/books/' + ${book.getId()}}"><img th:src="@{'/storage/' + ${book.getPhotoPath()}}"/></a>
+            <a th:href="@{'/books/' + ${book.getId()}}"><img height="300px" width="180px" th:src="@{'/storage/' + ${book.getPhoto()}}"/></a>
             <div class="caption">
                 <a th:href="@{'/books/' + ${book.getId()}}"><h3 th:text="${book.getTitle()}">Title</h3></a>
                 <a th:href="@{'authors/' + ${book.getBookAuthor().getId()}}"><p th:text="${book.getBookAuthor().getName()} + ' ' + ${book.getBookAuthor().getLastName()}">Author's

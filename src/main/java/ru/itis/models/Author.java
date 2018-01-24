@@ -1,14 +1,9 @@
 package ru.itis.models;
 
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import ru.itis.repositories.AuthorsRepository;
-import ru.itis.repositories.BooksRepository;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -41,14 +36,16 @@ public class Author {
     @Column(name = "date_of_death")
     private Integer dateOfDeath;
 
-    @Column(name = "photo_path")
-    @Value("storage.path")
-    private String photoPath;
-
-    /*@Autowired
-    private BooksRepository booksRepository;
-
-    public List<Book> getBooksByAuthor(Author author) {
-        return booksRepository.findBooksByBookAuthor(author);
-    }*/
+    @Column(name = "photo")
+    private String photo;
 }
+
+
+
+
+
+
+
+
+
+

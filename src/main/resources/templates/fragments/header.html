@@ -1,12 +1,9 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:fragment="head">
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </div>
@@ -20,6 +17,7 @@
             <li><a th:href="@{/books}">Books</a></li>
             <li><a th:href="@{/authors}">Authors</a></li>
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
             <!--НЕ РАБОТАЕТ-->
             <!--<li sec:authorize-url="/admin/users">
@@ -31,6 +29,15 @@
             </li>
             <li><a th:href="@{/logout}">Logout</a></li>
         </ul>
+
+        <form class="navbar-form navbar-right">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search"/>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </form>
     </div>
 </nav>
 </body>

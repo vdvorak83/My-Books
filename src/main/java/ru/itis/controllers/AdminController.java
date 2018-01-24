@@ -64,11 +64,6 @@ public class AdminController {
         model.addAttribute(authenticationService.getUserByAuthentication(authentication));
         model.addAttribute("booksService", booksService);
 
-        for (Book book : booksService.getBooksByBookAuthor(authorsService.getAuthorById(1))) {
-            System.out.println(book.getTitle() + " by " + book.getBookAuthor().getName() + " "
-                    + book.getBookAuthor().getLastName());
-        }
-
         return "admin-authors";
     }
 }

@@ -29,9 +29,8 @@ public class Book {
     @Column(name = "rating")
     private double rating;
 
-    @Column(name = "photo_path")
-    @Value("storage.path")
-    private String photoPath;
+    @Column(name = "photo")
+    private String photo;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Author bookAuthor;
