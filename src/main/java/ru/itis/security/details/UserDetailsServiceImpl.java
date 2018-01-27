@@ -10,7 +10,7 @@ import ru.itis.repositories.UsersRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
+    @Autowired
     private final UsersRepository usersRepository;
 
     @Autowired

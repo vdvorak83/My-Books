@@ -11,7 +11,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-2" style="margin-top: 20px">
-            <img th:src="@{'/storage/' + ${model.book.getPhotoPath()}}" class="img-thumbnail center-block" />
+            <img th:src="@{'/storage/' + ${model.book.getPhoto()}}" class="img-thumbnail center-block" />
         </div>
         <div class="col-md-8">
             <h3 th:text="${model.book.getTitle()}"></h3>

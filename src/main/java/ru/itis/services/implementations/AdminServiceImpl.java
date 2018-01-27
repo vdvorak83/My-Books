@@ -7,7 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.itis.models.User;
 import ru.itis.repositories.UsersRepository;
 import ru.itis.security.enums.Role;
+import ru.itis.security.enums.Status;
 import ru.itis.services.AdminService;
+import ru.itis.services.AuthenticationService;
 import ru.itis.utils.PasswordGenerator;
 import ru.itis.utils.SmtpMailSender;
 
@@ -19,6 +21,9 @@ import java.util.concurrent.Executors;
 
 @Service
 public class AdminServiceImpl implements AdminService {
+    @Autowired
+    private AuthenticationService authenticationService;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -63,5 +68,20 @@ public class AdminServiceImpl implements AdminService {
         });
 
         return tempPassword;
+    }
+
+    @Override
+    public void setUserStatusEnabled(Integer id) {
+        usersRepository.setUserStatusEnabled(Status.USER_ENABLED, id);
+    }
+
+    @Override
+    public void setUserStatusDeleted(Integer id) {
+        usersRepository.setUserStatusDeleted(Status.USER_DELETED, id);
+    }
+
+    @Override
+    public void setUserStatusBanned(Integer id) {
+        usersRepository.setUserStatusBanned(Status.USER_BANNED, id);
     }
 }

@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface AuthorsRepository extends JpaRepository<Author, Integer> {
     List<Author> findAll();
+
     Author findAuthorById(Integer id);
 }

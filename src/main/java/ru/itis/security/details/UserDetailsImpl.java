@@ -1,16 +1,14 @@
 package ru.itis.security.details;
 
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.itis.models.User;
-import ru.itis.security.enums.State;
+import ru.itis.security.enums.Status;
 
 import java.util.Collection;
 import java.util.Collections;
 
-// класс, который помогает спрингу понять, как устроена ваша сущность для авторизации
 public class UserDetailsImpl implements UserDetails {
 
     private User user;
@@ -52,8 +50,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
-        //return this.user.getState().equals(State.CONFIRMED); //TODO (хули с этим делать???????)
+        return this.user.getStatus().equals(Status.USER_ENABLED);
     }
 
     public User getUser() {

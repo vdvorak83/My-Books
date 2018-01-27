@@ -2,6 +2,7 @@ package ru.itis.models;
 
 import lombok.*;
 import ru.itis.security.enums.Role;
+import ru.itis.security.enums.Status;
 
 import javax.persistence.*;
 
@@ -39,11 +40,13 @@ public class User {
     private String name;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "role")
     private Role role;
 
     @Column(name = "photo")
     private String photo;
 
-    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "books")
-    private Set<Book> books;*/
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 }
