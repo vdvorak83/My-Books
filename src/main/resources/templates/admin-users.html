@@ -31,22 +31,6 @@
                     <td><a th:href="@{'/admin/password/temp/' + ${user.id}}">Sent</a></td>
                     <td th:text="${user.getStatus()}"></td>
                     <td>
-                        <!--<div th:if="${#strings.equals(user.getStatus(), 'USER_ENABLED')}">
-                            <form th:method="post" th:action="@{'/admin/users/delete/' + ${user.id}}">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                        <div th:if="${not #strings.equals(user.getStatus(), 'USER_ENABLED')}">
-                            <form th:method="post" th:action="@{'/admin/users/enable/' + ${user.id}}">
-                                <button type="submit" class="btn btn-success">Enable</button>
-                            </form>
-                        </div>
-                        <div>
-                            <form th:method="post" th:action="@{'/admin/users/ban/' + ${user.id}}">
-                                <button type="submit" class="btn btn-danger">Ban</button>
-                            </form>
-                        </div>-->
-
                         <form th:if="${#strings.equals(user.getStatus(), 'USER_ENABLED')}" th:method="post"
                               th:action="@{'/admin/users/delete/' + ${user.id}}">
                             <button type="submit" class="btn btn-danger">Delete</button>

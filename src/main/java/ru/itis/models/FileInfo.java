@@ -2,12 +2,8 @@ package ru.itis.models;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
 @Getter
 @Setter
 @ToString
@@ -15,14 +11,26 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 
+@Entity
+@Table(name = "file_info")
 public class FileInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
-    private String storageFileName;
+    @Column(name = "original_file_name")
     private String originalFileName;
+
+    @Column(name = "storage_file_name")
+    private String storageFileName;
+
+    @Column(name = "type")
     private String type;
+
+    @Column(name = "url")
     private String url;
+
+    @Column(name = "size")
     private Long size;
 }

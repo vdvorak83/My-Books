@@ -8,11 +8,9 @@ import ru.itis.models.User;
 import ru.itis.security.enums.Role;
 import ru.itis.security.enums.Status;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional
 public interface UsersRepository extends JpaRepository<User, Integer> {
     List<User> findAll();
 

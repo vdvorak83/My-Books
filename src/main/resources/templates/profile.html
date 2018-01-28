@@ -45,7 +45,7 @@
                 <li class="active"><a data-toggle="tab" href="#reading">Currently Reading</a></li>
                 <li><a data-toggle="tab" href="#going-to">Going to Read</a></li>
                 <li><a data-toggle="tab" href="#stopped">Stopped Reading</a></li>
-                <li><a data-toggle="tab" href="#read">Read</a></li>
+                <li><a data-toggle="tab" href="#read">Finished Reading</a></li>
             </ul>
 
             <div class="tab-content">
@@ -58,6 +58,7 @@
                                 <span th:text="' by ' +
                                ${books.getBook().getBookAuthor().getName()} + ' ' +
                                ${books.getBook().getBookAuthor().getLastName()}"></span>
+                                <br />
                             </span>
                         </span>
                     </span>
@@ -71,6 +72,7 @@
                                 <span th:text="' by ' +
                                ${books.getBook().getBookAuthor().getName()} + ' ' +
                                ${books.getBook().getBookAuthor().getLastName()}"></span>
+                                <br />
                             </span>
                         </span>
                     </span>
@@ -84,12 +86,13 @@
                                 <span th:text="' by ' +
                                ${books.getBook().getBookAuthor().getName()} + ' ' +
                                ${books.getBook().getBookAuthor().getLastName()}"></span>
+                                <br />
                             </span>
                         </span>
                     </span>
                 </div>
                 <div id="read" class="tab-pane fade">
-                    <h3>Read</h3>
+                    <h3>Finished Reading</h3>
                     <span th:if="${not #lists.isEmpty(model.usersBooks)}">
                         <span th:each="books : ${model.usersBooks}">
                             <span th:if="${#strings.equals(books.getBookStatus(), 'READ')}">
@@ -97,6 +100,7 @@
                                 <span th:text="' by ' +
                                ${books.getBook().getBookAuthor().getName()} + ' ' +
                                ${books.getBook().getBookAuthor().getLastName()}"></span>
+                                <br />
                             </span>
                         </span>
                     </span>

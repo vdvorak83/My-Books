@@ -2,22 +2,26 @@
 <head>
     <div th:include="fragments/header :: head"></div>
     <title>Authors</title>
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="../css/thumbnails.css"/>
 </head>
 <body>
 <div th:include="fragments/header :: header"></div>
-<div th:if="${not #lists.isEmpty(model.authorsList)}" class="row">
-    <div th:each="author, iterStat : ${model.authorsList}"
-         th:class="${iterStat.index % 5 == 0} ? 'col-md-2 col-md-offset-1' : 'col-md-2'">
-        <div class="thumbnail">
-            <img th:src="@{'/storage/' + ${author.getPhoto()}}"/>
-            <div class="caption">
-                <h3 th:text="${author.name} + ' ' + ${author.lastName.charAt(0)} + '.'">Title</h3>
-                <p th:text="${author.dateOfBirth} + ' - ' + ${author.dateOfDeath}"></p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
-                                                                                   role="button">Button</a></p>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(model.authorsList)}" class="flex-row row">
+        <div th:each="author, iterStat : ${model.authorsList}" class="col-xs-6 col-sm-4 col-lg-3">
+            <div class="thumbnail">
+                <a th:href="@{'/authors/' + ${author.getId()}}"><img
+                        th:src="@{'/storage/' + ${author.getPhoto()}}"/></a>
+                <div class="caption">
+                    <a th:href="@{'/authors/' + ${author.getId()}}"><h3
+                            th:text="${author.getName()} + ' ' + ${author.getLastName()}">Author</h3></a>
+                    <p th:text="${author.getAbout()}" class="flex-text text-muted">Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Consequatur optio ipsa fuga vel repudiandae impedit illum delectus nihil error animi nobis
+                        quaerat quidem, amet, praesentium aspernatur inventore numquam! Totam, dolorem inventore
+                        reprehenderit,
+                        culpa obcaecati!</p>
+                </div>
             </div>
         </div>
     </div>

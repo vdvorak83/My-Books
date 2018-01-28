@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.itis.services.AuthenticationService;
+import ru.itis.services.BooksService;
 import ru.itis.services.UsersBooksService;
 
 @Controller
@@ -17,6 +18,9 @@ public class ProfileController {
     private AuthenticationService authenticationService;
 
     @Autowired
+    private BooksService booksService;
+
+    @Autowired
     private UsersBooksService usersBooksService;
 
     @GetMapping("/profile")
@@ -24,6 +28,9 @@ public class ProfileController {
         model.addAttribute(authenticationService.getUserByAuthentication(authentication));
         model.addAttribute("usersBooks", usersBooksService.getUsersBooksByUser(
                 authenticationService.getUserByAuthentication(authentication)));
+
+/*        usersBooksService.setBookAsCurrentlyReading(authenticationService.getUserByAuthentication(authentication),
+                booksService.getBookById(10));*/
 
         return "profile";
     }

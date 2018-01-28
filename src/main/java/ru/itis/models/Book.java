@@ -1,7 +1,6 @@
 package ru.itis.models;
 
 import lombok.*;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 
@@ -18,6 +17,7 @@ import javax.persistence.*;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "title")

@@ -4,7 +4,6 @@ import lombok.*;
 import ru.itis.security.enums.BookStatus;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -19,7 +18,8 @@ import javax.validation.constraints.NotNull;
 public class UsersBooks {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @Column(name = "id")
+    public Integer id;
 
     @ManyToOne
     private User user;
@@ -27,13 +27,8 @@ public class UsersBooks {
     @ManyToOne
     private Book book;
 
-    @NotNull
     @Column(name = "users_book_rating")
     private Double bookRatingByUser;
-
-    @NotNull
-    @Column(name = "book_rating")
-    private Double bookRating;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "book_status")
