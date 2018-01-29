@@ -29,9 +29,6 @@ public class ProfileController {
         model.addAttribute("usersBooks", usersBooksService.getUsersBooksByUser(
                 authenticationService.getUserByAuthentication(authentication)));
 
-/*        usersBooksService.setBookAsCurrentlyReading(authenticationService.getUserByAuthentication(authentication),
-                booksService.getBookById(10));*/
-
         return "profile";
     }
 }

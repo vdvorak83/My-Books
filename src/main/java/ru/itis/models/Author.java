@@ -1,8 +1,11 @@
 package ru.itis.models;
 
 import lombok.*;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
+
 
 @Getter
 @Setter
@@ -13,6 +16,7 @@ import javax.persistence.*;
 @ToString
 
 @Entity
+@Indexed
 @Table(name = "authors")
 public class Author {
     @Id
@@ -20,9 +24,11 @@ public class Author {
     @Column(name = "id")
     private Integer id;
 
+    @Field
     @Column(name = "name")
     private String name;
 
+    @Field
     @Column(name = "last_name")
     private String lastName;
 
@@ -38,7 +44,6 @@ public class Author {
     @Column(name = "photo")
     private String photo;
 }
-
 
 
 

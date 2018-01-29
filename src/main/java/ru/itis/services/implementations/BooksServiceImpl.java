@@ -1,7 +1,5 @@
 package ru.itis.services.implementations;
 
-import org.hibernate.Query;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.itis.models.Author;

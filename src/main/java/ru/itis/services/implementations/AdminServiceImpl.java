@@ -9,7 +9,6 @@ import ru.itis.repositories.UsersRepository;
 import ru.itis.security.enums.Role;
 import ru.itis.security.enums.Status;
 import ru.itis.services.AdminService;
-import ru.itis.services.AuthenticationService;
 import ru.itis.utils.PasswordGenerator;
 import ru.itis.utils.SmtpMailSender;
 
@@ -21,9 +20,6 @@ import java.util.concurrent.Executors;
 
 @Service
 public class AdminServiceImpl implements AdminService {
-    @Autowired
-    private AuthenticationService authenticationService;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 

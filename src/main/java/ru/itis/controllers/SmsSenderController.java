@@ -15,7 +15,6 @@ import java.util.concurrent.ExecutionException;
 
 @Controller
 public class SmsSenderController {
-
     @Autowired
     AuthenticationService authenticationService;
 
