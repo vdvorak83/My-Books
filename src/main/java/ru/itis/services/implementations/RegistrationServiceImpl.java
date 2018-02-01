@@ -8,12 +8,15 @@ import ru.itis.forms.UserRegistrationForm;
 import ru.itis.models.User;
 import ru.itis.repositories.UsersRepository;
 import ru.itis.security.enums.Role;
+import ru.itis.security.enums.Status;
 import ru.itis.services.RegistrationService;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
     @Autowired
     private UsersRepository usersRepository;
+
+    private final String DEFAULT_PROFILE_PHOTO = "65345955-f3f5-4f33-9cdd-6de087127b1f.png";
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -26,6 +29,8 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .phone(userRegistrationForm.getPhone())
                 .hashPassword(passwordEncoder.encode(userRegistrationForm.getPassword()))
                 .role(Role.USER)
+                .photo(DEFAULT_PROFILE_PHOTO)
+                .status(Status.USER_NOT_CONFIRMED)
                 .build();
 
         usersRepository.save(newUser);

@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import ru.itis.models.User;
-import ru.itis.repositories.UsersRepository;
 import ru.itis.services.AuthenticationService;
 import ru.itis.services.FileStorageService;
 import ru.itis.services.UsersService;

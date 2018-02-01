@@ -19,6 +19,8 @@ public interface UsersRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findUserByUsername(String username);
 
+    Optional<User> findOneByUsername(String username);
+
     Optional<User> findUserById(Integer id);
 
     @Deprecated
@@ -26,21 +28,31 @@ public interface UsersRepository extends JpaRepository<User, Integer> {
 
     @Transactional
     @Modifying
-    @Query("update User u set u.photo = :photo where  u.id = :id")
-    void updateProfilePhoto(@Param("photo") String photo, @Param("id") Integer id);
+    @Query("UPDATE User u SET u.hashPassword = :newPassword WHERE u.id = :id")
+    void updateUserPassword(@Param("newPassword") String newPassword, @Param("id") Integer id);
 
     @Transactional
     @Modifying
-    @Query("update User u set u.status = :status where u.id = :id")
+    @Query("UPDATE User u SET u.username = :newUsername WHERE u.id = :id")
+    void changeUsername(@Param("newUsername") String newUsername, @Param("id") Integer id);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE User u SET u.photo = :photo WHERE  u.id = :id")
+    void updateUserProfilePhoto(@Param("photo") String photo, @Param("id") Integer id);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE User u SET u.status = :status WHERE u.id = :id")
     void setUserStatusDeleted(@Param("status") Status status, @Param("id") Integer id);
 
     @Transactional
     @Modifying
-    @Query("update User u set u.status = :status where u.id = :id")
+    @Query("UPDATE User u SET u.status = :status WHERE u.id = :id")
     void setUserStatusEnabled(@Param("status") Status status, @Param("id") Integer id);
 
     @Transactional
     @Modifying
-    @Query("update User u set u.status = :status where u.id = :id")
+    @Query("UPDATE User u SET u.status = :status WHERE u.id = :id")
     void setUserStatusBanned(@Param("status") Status status, @Param("id") Integer id);
 }

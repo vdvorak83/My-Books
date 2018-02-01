@@ -21,10 +21,10 @@ import java.util.Optional;
 @Component
 public class AuthProvider implements AuthenticationProvider {
     @Autowired
-    UsersRepository usersRepository;
+    private UsersRepository usersRepository;
 
     @Autowired
-    UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
 
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -32,19 +32,23 @@ public class AuthProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
-        Optional<User> userOptional = usersRepository.findUserByUsername(username);
+        Optional<User> userOptional = usersRepository.findOneByUsername(username);
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
 
+            System.out.println("FIRST CONDITION");
+
             if (!passwordEncoder.matches(password, user.getHashPassword())) {
+                System.out.println("SECOND CONDITION");
                 if (passwordEncoder.matches(password, user.getHashTempPassword())) {
+                    System.out.println("THIRD CONDITION");
                     user.setHashTempPassword(null);
                     usersRepository.save(user);
                 }
-            }
-            else {
-                throw new BadCredentialsException("Wrong password or login");
+                else {
+                    throw new BadCredentialsException("Wrong password or login");
+                }
             }
         }
         else {

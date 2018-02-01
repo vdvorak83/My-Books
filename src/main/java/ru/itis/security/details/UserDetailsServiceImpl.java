@@ -10,7 +10,6 @@ import ru.itis.repositories.UsersRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
     private final UsersRepository usersRepository;
 
     @Autowired
@@ -22,6 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = usersRepository.findUserByUsername(username).orElseThrow(()
                 -> new IllegalArgumentException("User not found by login <" + username + ">"));
+
         return new UserDetailsImpl(user);
     }
 }

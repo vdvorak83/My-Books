@@ -4,12 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import ru.itis.repositories.UsersRepository;
 import ru.itis.services.AuthenticationService;
-import ru.itis.services.BooksService;
 import ru.itis.services.UsersBooksService;
+import ru.itis.services.UsersService;
 
 @Controller
 @RequestMapping("/user")
@@ -18,10 +17,10 @@ public class ProfileController {
     private AuthenticationService authenticationService;
 
     @Autowired
-    private BooksService booksService;
+    private UsersBooksService usersBooksService;
 
     @Autowired
-    private UsersBooksService usersBooksService;
+    private UsersService usersService;
 
     @GetMapping("/profile")
     public String getProfilePage(Authentication authentication, @ModelAttribute("model") ModelMap model) {
@@ -30,5 +29,20 @@ public class ProfileController {
                 authenticationService.getUserByAuthentication(authentication)));
 
         return "profile";
+    }
+
+    @PostMapping("/profile/change-password")
+    public String changePassword(@RequestParam("new_password") String newPassword, Authentication authentication) {
+        usersService.changeUserPassword(usersService.encodePassword(newPassword),
+                authenticationService.getUserByAuthentication(authentication).getId());
+
+        return "redirect:/user/profile";
+    }
+
+    @PostMapping("/profile/change-username")
+    public String changeUsername(@RequestParam("new_username") String newUsername, Authentication authentication) {
+        usersService.changeUsername(newUsername, authenticationService.getUserByAuthentication(authentication).getId());
+
+        return "redirect:/user/profile";
     }
 }
