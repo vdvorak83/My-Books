@@ -26,12 +26,12 @@ public class SearchController {
 
     @RequestMapping("/search")
     public String search(@ModelAttribute("model") ModelMap model,
-                         @RequestParam(value = "q", required = false) String q, Authentication authentication) {
+                         @RequestParam(value = "query", required = false) String query, Authentication authentication) {
         List bookSearchResults = null, authorSearchResult = null;
 
         try {
-            bookSearchResults = bookSearch.search(q);
-            authorSearchResult = authorSearch.search(q);
+            bookSearchResults = bookSearch.search(query);
+            authorSearchResult = authorSearch.search(query);
         } catch (Exception ignored) {
 
         }

@@ -11,7 +11,22 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-2" style="margin-top: 20px">
-            <img th:src="@{'/storage/' + ${model.book.getPhoto()}}" class="img-thumbnail center-block" />
+            <img th:src="@{'/storage/' + ${model.book.getPhoto()}}" class="img-thumbnail center-block"/>
+            <hr/>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">Currently Reading</button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span><span>&#8203;</span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Want to Read</a></li>
+                    <li><a href="#">Stopped Reading</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Finished Reading</a></li>
+                </ul>
+            </div>
         </div>
         <div class="col-md-8">
             <h3 th:text="${model.book.getTitle()}"></h3>
