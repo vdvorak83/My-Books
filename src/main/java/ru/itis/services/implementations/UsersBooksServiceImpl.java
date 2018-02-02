@@ -29,6 +29,10 @@ public class UsersBooksServiceImpl implements UsersBooksService {
         usersBooks.setBook(book);
         usersBooks.setBookStatus(BookStatus.READING);
 
+        if (usersBooksRepository.existsByUserAndBook(user, book)) {
+            usersBooksRepository.delete(user, book);
+        }
+
         usersBooksRepository.save(usersBooks);
     }
 
@@ -39,6 +43,10 @@ public class UsersBooksServiceImpl implements UsersBooksService {
         usersBooks.setUser(user);
         usersBooks.setBook(book);
         usersBooks.setBookStatus(BookStatus.TO_READ);
+
+        if (usersBooksRepository.existsByUserAndBook(user, book)) {
+            usersBooksRepository.delete(user, book);
+        }
 
         usersBooksRepository.save(usersBooks);
     }
@@ -51,6 +59,10 @@ public class UsersBooksServiceImpl implements UsersBooksService {
         usersBooks.setBook(book);
         usersBooks.setBookStatus(BookStatus.STOPPED_READING);
 
+        if (usersBooksRepository.existsByUserAndBook(user, book)) {
+            usersBooksRepository.delete(user, book);
+        }
+
         usersBooksRepository.save(usersBooks);
     }
 
@@ -61,6 +73,10 @@ public class UsersBooksServiceImpl implements UsersBooksService {
         usersBooks.setUser(user);
         usersBooks.setBook(book);
         usersBooks.setBookStatus(BookStatus.READ);
+
+        if (usersBooksRepository.existsByUserAndBook(user, book)) {
+            usersBooksRepository.delete(user, book);
+        }
 
         usersBooksRepository.save(usersBooks);
     }

@@ -7,14 +7,6 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
-<!--
-<ol>
-    <li th:each="book : ${model.search}">
-        <b><span th:text="${book.getTitle()}"></span></b>
-    </li>
-</ol>
--->
-
 <div class="container">
     <div th:if="${not #lists.isEmpty(model.bookSearchResults)}">
         <h3>Books</h3>
