@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import ru.itis.models.User;
 import ru.itis.repositories.UsersRepository;
 import ru.itis.services.UsersService;
+
+import java.util.Optional;
 
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -32,5 +35,10 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public void changeUsername(String newUsername, Integer id) {
         usersRepository.changeUsername(newUsername, id);
+    }
+
+    @Override
+    public Optional<User> findUserById(Integer id) {
+        return usersRepository.findUserById(id);
     }
 }

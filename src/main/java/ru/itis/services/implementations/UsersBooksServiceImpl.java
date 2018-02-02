@@ -64,4 +64,14 @@ public class UsersBooksServiceImpl implements UsersBooksService {
 
         usersBooksRepository.save(usersBooks);
     }
+
+    @Override
+    public void rateBook(User user, Book book, Integer rating) {
+        usersBooksRepository.rateBook(user, book, rating);
+    }
+
+    @Override
+    public UsersBooks queryByUserAndBook(User user, Book book) {
+        return usersBooksRepository.queryByUserAndBook(user, book);
+    }
 }

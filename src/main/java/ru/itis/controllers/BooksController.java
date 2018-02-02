@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.services.AuthenticationService;
 import ru.itis.services.BooksService;
+import ru.itis.services.UsersBooksService;
 
 import java.util.Optional;
 
@@ -18,6 +19,9 @@ public class BooksController {
 
     @Autowired
     private BooksService booksService;
+
+    @Autowired
+    private UsersBooksService usersBooksService;
 
     @GetMapping
     public String getBooksPage(@ModelAttribute("model") ModelMap model, Authentication authentication,
@@ -40,10 +44,22 @@ public class BooksController {
         if (authentication != null) {
             model.addAttribute(authenticationService.getUserByAuthentication(authentication));
             model.addAttribute("book", booksService.getBookById(id));
+            model.addAttribute("usersBooks", usersBooksService.queryByUserAndBook(
+                    authenticationService.getUserByAuthentication(authentication),
+                    booksService.getBookById(id)));
 
             return "book-page";
         }
 
         return "redirect:/login";
+    }
+
+    @PostMapping("/{book-id}")
+    public String rateBook(@PathVariable("book-id") Integer id, @RequestParam("book-rating") Integer rating,
+                           Authentication authentication) {
+        usersBooksService.rateBook(authenticationService.getUserByAuthentication(authentication),
+                booksService.getBookById(id), rating);
+
+        return "redirect:/books/" + id;
     }
 }

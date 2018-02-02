@@ -28,7 +28,7 @@ public class UsersBooks {
     private Book book;
 
     @Column(name = "users_book_rating")
-    private Double bookRatingByUser;
+    private Integer bookRatingByUser;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "book_status")

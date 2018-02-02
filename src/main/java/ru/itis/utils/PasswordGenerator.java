@@ -12,14 +12,14 @@ public class PasswordGenerator {
     private static final String PUNCTUATION = "!@#$%&*()_+-=[]|,./?><";
 
     public String generate() {
-        return generate((LOWER + UPPER + DIGITS + PUNCTUATION).toCharArray(), 10);
+        return generate((LOWER + UPPER + DIGITS + PUNCTUATION).toCharArray());
     }
 
-    private String generate(char[] validChars, int length) {
-        char[] password = new char[length];
+    private String generate(char[] validChars) {
+        char[] password = new char[10];
         Random random = new Random(System.nanoTime());
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < 10; i++) {
             password[i] = validChars[random.nextInt(validChars.length)];
         }
 

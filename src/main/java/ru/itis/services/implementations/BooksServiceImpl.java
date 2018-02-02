@@ -28,9 +28,4 @@ public class BooksServiceImpl implements BooksService {
     public List<Book> getBooksByBookAuthor(Author author) {
         return booksRepository.findBooksByBookAuthor(author);
     }
-
-    /*@Override
-    public Book getBookByAuthorId(Integer id) {
-        return booksRepository.findBookByAuthorId(id);
-    }*/
 }

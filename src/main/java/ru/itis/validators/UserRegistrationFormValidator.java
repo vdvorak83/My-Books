@@ -2,7 +2,6 @@ package ru.itis.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -26,7 +25,7 @@ public class UserRegistrationFormValidator implements Validator {
     public void validate(Object target, Errors errors) {
         UserRegistrationForm userRegistrationForm = (UserRegistrationForm) target;
 
-        Optional<User> existedUser = usersRepository.findUserByUsername(userRegistrationForm.getUsername());
+        Optional<User> existedUser = usersRepository.findOneByUsername(userRegistrationForm.getUsername());
 
         if (existedUser.isPresent()) {
             errors.reject("bad.login", "This username is already in use");

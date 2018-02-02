@@ -16,10 +16,6 @@ public class FileStorageUtil {
     @Value("${storage.path}")
     private String storagePath;
 
-    public String getStoragePath() {
-        return storagePath;
-    }
-
     @SneakyThrows
     public void copyToStorage(MultipartFile file, String storageFileName) {
         Files.copy(file.getInputStream(), Paths.get(storagePath, storageFileName));

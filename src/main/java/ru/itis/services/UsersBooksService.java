@@ -16,4 +16,8 @@ public interface UsersBooksService {
     void setBookAsStoppedReading(User user, Book book);
 
     void setBookAsRead(User user, Book book);
+
+    void rateBook(User user, Book book, Integer rating);
+
+    UsersBooks queryByUserAndBook(User user, Book book);
 }

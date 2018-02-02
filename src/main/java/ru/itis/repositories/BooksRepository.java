@@ -12,8 +12,4 @@ public interface BooksRepository extends JpaRepository<Book, Integer> {
     List<Book> findAll();
 
     List<Book> findBooksByBookAuthor(Author author);
-
-    List<Book> findBookByTitle(String title);
-
-    List<Book> findUserBooksById(Integer id);
 }

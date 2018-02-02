@@ -1,7 +1,6 @@
 package ru.itis.models;
 
 import lombok.*;
-import org.hibernate.search.annotations.Indexed;
 import ru.itis.security.enums.Role;
 import ru.itis.security.enums.Status;
 

@@ -19,12 +19,8 @@ public class SmsSenderController {
     AuthenticationService authenticationService;
 
     @GetMapping(value = "/sendsms")
-    public String getSmsPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
-//        if (authentication != null) {
-            return "sendsms";
-//        }
-
-//        return "redirect:/";
+    public String getSmsPage(@ModelAttribute("model") ModelMap model) {
+        return "sendsms";
     }
 
     @PostMapping(value = "/sendsms")

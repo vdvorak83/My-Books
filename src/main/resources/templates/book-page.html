@@ -1,7 +1,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:include="fragments/header :: head"></div>
-    <title>Book Test Page</title>
+    <link rel="stylesheet" href="../css/stars.css"/>
+    <title th:text="${model.book.getTitle()} + ' — ' +
+    ${model.book.getBookAuthor().getName()} + ' ' +
+    ${model.book.getBookAuthor().getLastName()}"></title>
+    <script src="../js/bootstrap-rating-input.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        function submitRating() {
+            document.getElementById("rate-book").submit();
+        }
+    </script>
 </head>
 
 <body>
@@ -10,31 +20,65 @@
     <div class="row">
         <div class="col-md-1">
         </div>
-        <div class="col-md-2" style="margin-top: 20px">
+        <div class="col-md-2">
             <img th:src="@{'/storage/' + ${model.book.getPhoto()}}" class="img-thumbnail center-block"/>
             <hr/>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default">Currently Reading</button>
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span><span>&#8203;</span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Want to Read</a></li>
-                    <li><a href="#">Stopped Reading</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Finished Reading</a></li>
-                </ul>
+            <div class="text-center">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-default">Currently Reading</button>
+                    <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span><span>&#8203;</span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Want to Read</a></li>
+                        <li><a href="#">Stopped Reading</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Finished Reading</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr/>
+            <div class="text-center">
+                <div th:if="${model.usersBooks} == null">
+                    <p>
+                        <small>Rate the book</small>
+                    </p>
+                    <form id="rate-book" th:action="@{'/books/' + ${model.book.getId()}}" th:method="post"
+                          onclick="submitRating()">
+                        <input type="submit" name="book-rating" id="book-rating" class="rating"
+                               value="0" onclick="submitRating()"/>
+                    </form>
+                </div>
+                <div th:unless="${model.usersBooks} == null">
+                    <p>
+                        <small>Your rating</small>
+                    </p>
+                    <form id="rate-book" th:action="@{'/books/' + ${model.book.getId()}}" th:method="post"
+                          onclick="submitRating()">
+                        <input type="submit" name="book-rating" id="book-rating" class="rating"
+                               th:value="${model.usersBooks.getBookRatingByUser()}" onclick="submitRating()"/>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="col-md-8">
-            <h3 th:text="${model.book.getTitle()}"></h3>
+            <h2 th:text="${model.book.getTitle()}" style="display: inline"></h2>
+            <h4 style="display: inline">by </h4>
+            <a th:href="@{'../authors/' + ${model.book.getBookAuthor().getId()}}">
+                <h4 th:text="${model.book.getBookAuthor().getName()} + ' ' +
+                    ${model.book.getBookAuthor().getLastName()}" style="display: inline"></h4>
+            </a>
+            <hr/>
             <p th:text="${model.book.getDescription()}"></p>
         </div>
         <div class="col-md-1">
         </div>
     </div>
 </div>
+<script>
+    $("#book-rating").rating({animate: false});
+</script>
 </body>
 </html>

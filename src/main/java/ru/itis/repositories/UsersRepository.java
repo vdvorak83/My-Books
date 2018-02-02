@@ -17,8 +17,6 @@ public interface UsersRepository extends JpaRepository<User, Integer> {
 
     List<User> findAllByRole(Role role);
 
-    Optional<User> findUserByUsername(String username);
-
     Optional<User> findOneByUsername(String username);
 
     Optional<User> findUserById(Integer id);
@@ -38,7 +36,7 @@ public interface UsersRepository extends JpaRepository<User, Integer> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE User u SET u.photo = :photo WHERE  u.id = :id")
+    @Query("UPDATE User u SET u.photo = :photo WHERE u.id = :id")
     void updateUserProfilePhoto(@Param("photo") String photo, @Param("id") Integer id);
 
     @Transactional

@@ -45,13 +45,11 @@ public class AuthProvider implements AuthenticationProvider {
                     System.out.println("THIRD CONDITION");
                     user.setHashTempPassword(null);
                     usersRepository.save(user);
-                }
-                else {
+                } else {
                     throw new BadCredentialsException("Wrong password or login");
                 }
             }
-        }
-        else {
+        } else {
             throw new BadCredentialsException("Wrong password or login");
         }
 
