@@ -54,70 +54,69 @@
 
             <div class="tab-content">
                 <div id="reading" class="tab-pane fade in active">
-                    <h3>Currently Reading</h3>
-                    <span th:if="${not #lists.isEmpty(model.usersBooks)}">
-                        <span th:each="books : ${model.usersBooks}">
-                            <span th:if="${#strings.equals(books.getBookStatus(), 'READING')}">
-                                <a th:href="@{'/books/' + ${books.getBook().getId()}}"><span
-                                        th:text="${books.getBook().getTitle()}"></span></a>
-                                <span th:text="' by ' +
-                               ${books.getBook().getBookAuthor().getName()} + ' ' +
-                               ${books.getBook().getBookAuthor().getLastName()}"></span>
+                    <h3 style="margin-bottom: 25px">Currently Reading</h3>
+                    <div th:if="${not #lists.isEmpty(model.usersBooks)}">
+                        <div th:each="books : ${model.usersBooks}">
+                            <div th:if="${#strings.equals(books.getBookStatus(), 'READING')}">
+                                <a th:href="@{'/books/' + ${books.getBook().getId()}}">
+                                    <h4 th:text="${books.getBook().getTitle()}" style="display: inline;"></h4>
+                                </a>
+                                <span th:text="' by ' + ${books.getBook().getBookAuthor().getName()} + ' ' + ${books.getBook().getBookAuthor().getLastName()}" style="display: inline; color: gray;"></span>
                                 <br/>
-                            </span>
-                        </span>
-                    </span>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="going-to" class="tab-pane fade">
-                    <h3>Going to Read</h3>
-                    <span th:if="${not #lists.isEmpty(model.usersBooks)}">
-                        <span th:each="books : ${model.usersBooks}">
-                            <span th:if="${#strings.equals(books.getBookStatus(), 'TO_READ')}">
-                                <a th:href="@{'/books/' + ${books.getBook().getId()}}"><span
-                                        th:text="${books.getBook().getTitle()}"></span></a>
-                                <span th:text="' by ' +
-                               ${books.getBook().getBookAuthor().getName()} + ' ' +
-                               ${books.getBook().getBookAuthor().getLastName()}"></span>
+                    <h3 style="margin-bottom: 25px">Going to Read</h3>
+                    <div th:if="${not #lists.isEmpty(model.usersBooks)}">
+                        <div th:each="books : ${model.usersBooks}">
+                            <div th:if="${#strings.equals(books.getBookStatus(), 'TO_READ')}">
+                                <a th:href="@{'/books/' + ${books.getBook().getId()}}">
+                                    <h4 th:text="${books.getBook().getTitle()}" style="display: inline;"></h4>
+                                </a>
+                                <span th:text="' by ' + ${books.getBook().getBookAuthor().getName()} + ' ' + ${books.getBook().getBookAuthor().getLastName()}" style="display: inline; color: gray;"></span>
                                 <br/>
-                            </span>
-                        </span>
-                    </span>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="stopped" class="tab-pane fade">
-                    <h3>Stopped Reading</h3>
-                    <span th:if="${not #lists.isEmpty(model.usersBooks)}">
-                        <span th:each="books : ${model.usersBooks}">
-                            <span th:if="${#strings.equals(books.getBookStatus(), 'STOPPED_READING')}">
-                                <a th:href="@{'/books/' + ${books.getBook().getId()}}"><span
-                                        th:text="${books.getBook().getTitle()}"></span></a>
-                                <span th:text="' by ' +
-                               ${books.getBook().getBookAuthor().getName()} + ' ' +
-                               ${books.getBook().getBookAuthor().getLastName()}"></span>
+                    <h3 style="margin-bottom: 25px">Stopped Reading</h3>
+                    <div th:if="${not #lists.isEmpty(model.usersBooks)}">
+                        <div th:each="books : ${model.usersBooks}">
+                            <div th:if="${#strings.equals(books.getBookStatus(), 'STOPPED_READING')}">
+                                <a th:href="@{'/books/' + ${books.getBook().getId()}}">
+                                    <h4 th:text="${books.getBook().getTitle()}" style="display: inline;"></h4>
+                                </a>
+                                <span th:text="' by ' + ${books.getBook().getBookAuthor().getName()} + ' ' + ${books.getBook().getBookAuthor().getLastName()}" style="display: inline; color: gray;"></span>
                                 <br/>
-                            </span>
-                        </span>
-                    </span>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="read" class="tab-pane fade">
-                    <h3>Finished Reading</h3>
-                    <span th:if="${not #lists.isEmpty(model.usersBooks)}">
-                        <span th:each="books : ${model.usersBooks}">
-                            <span th:if="${#strings.equals(books.getBookStatus(), 'READ')}">
-                                <a th:href="@{'/books/' + ${books.getBook().getId()}}"><span
-                                        th:text="${books.getBook().getTitle()}"></span></a>
-                                <span th:text="' by ' +
-                               ${books.getBook().getBookAuthor().getName()} + ' ' +
-                               ${books.getBook().getBookAuthor().getLastName()}"></span>
+                    <h3 style="margin-bottom: 25px">Finished Reading</h3>
+                    <div th:if="${not #lists.isEmpty(model.usersBooks)}">
+                        <div th:each="books : ${model.usersBooks}">
+                            <div th:if="${#strings.equals(books.getBookStatus(), 'READ')}">
+                                <a th:href="@{'/books/' + ${books.getBook().getId()}}">
+                                    <h4 th:text="${books.getBook().getTitle()}" style="display: inline;"></h4>
+                                </a>
+                                <span th:text="' by ' + ${books.getBook().getBookAuthor().getName()} + ' ' + ${books.getBook().getBookAuthor().getLastName()}" style="display: inline; color: gray;"></span>
                                 <br/>
-                            </span>
-                        </span>
-                    </span>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <h1 class="text-center">
-                <!--/*@thymesVar id="user" type="ru.itis.models.User"*/-->
                 <span th:text="${model.user.username}"></span>
                 <span data-toggle="tooltip" data-placement="right" title="Edit Profile Info">
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal"
@@ -131,6 +130,8 @@
         </div>
     </div>
 </div>
+
+<div id="footer" th:replace="fragments/footer :: footer"></div>
 
 <div id="modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -200,5 +201,8 @@
         </div>
     </div>
 </div>
+<script>
+    $("#book-rating").rating({animate: false});
+</script>
 </body>
 </html>

@@ -7,34 +7,33 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
-<div>
-    <div class="container">
-        <div th:if="${not #lists.isEmpty(model.authors)}">
-            <h3><a th:href="@{/admin/users}">Users</a> | <a th:href="@{/admin/books}">Books</a> | Authors</h3>
-            <hr />
-            <table id="users-table" class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Books</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="author : ${model.authors}">
-                    <th scope="row" th:text="${author.id}"></th>
-                    <td>
-                        <a th:href="@{'/authors/' + ${author.getId()}}"><p th:text="${author.getName()} + ' ' + ${author.getLastName()}"></p></a>
-                    </td>
-                    <td>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(model.authors)}">
+        <h3><a th:href="@{/admin/users}">Users</a> | <a th:href="@{/admin/books}">Books</a> | Authors</h3>
+        <hr/>
+        <table id="users-table" class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Author</th>
+                <th scope="col">Books</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="author : ${model.authors}">
+                <th scope="row" th:text="${author.id}"></th>
+                <td>
+                    <a th:href="@{'/authors/' + ${author.getId()}}"><p
+                            th:text="${author.getName()} + ' ' + ${author.getLastName()}"></p></a>
+                </td>
+                <td>
                         <span th:each="book : ${model.booksService.getBooksByBookAuthor(author)}">
                             <a th:href="@{'/books/' + ${book.getId()}}"><p th:text="${book.getTitle()}"> </p></a>
                         </span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 

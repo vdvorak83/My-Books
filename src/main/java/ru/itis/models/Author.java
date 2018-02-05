@@ -5,6 +5,7 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Getter
@@ -12,7 +13,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@EqualsAndHashCode
 @ToString
 
 @Entity
@@ -43,6 +43,9 @@ public class Author {
 
     @Column(name = "photo")
     private String photo;
+
+    @OneToMany(mappedBy = "bookAuthor")
+    private Set<Book> books;
 }
 
 

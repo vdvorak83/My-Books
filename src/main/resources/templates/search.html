@@ -8,6 +8,12 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 <div class="container">
+    <div th:if="${#lists.isEmpty(model.authorSearchResults) and #lists.isEmpty(model.bookSearchResults)}">
+        <div class="text-center">
+            <h2 style="color: gray;">No results by query <span th:text="${#httpServletRequest.getParameter('query')}"></span></h2>
+        </div>
+    </div>
+
     <div th:if="${not #lists.isEmpty(model.bookSearchResults)}">
         <h3>Books</h3>
         <hr/>
@@ -28,13 +34,12 @@
             </div>
         </div>
     </div>
-
-    <div th:if="${not #lists.isEmpty(model.authorSearchResult)}">
+    <div th:if="${not #lists.isEmpty(model.authorSearchResults)}">
         <h3>Authors</h3>
         <hr/>
     </div>
-    <div th:if="${not #lists.isEmpty(model.authorSearchResult)}" class="flex-row row">
-        <div th:each="author : ${model.authorSearchResult}" class="col-xs-6 col-sm-4 col-lg-3">
+    <div th:if="${not #lists.isEmpty(model.authorSearchResults)}" class="flex-row row">
+        <div th:each="author : ${model.authorSearchResults}" class="col-xs-6 col-sm-4 col-lg-3">
             <div class="thumbnail">
                 <a th:href="@{'/authors/' + ${author.getId()}}"><img
                         th:src="@{'/storage/' + ${author.getPhoto()}}"/></a>
@@ -52,5 +57,6 @@
         </div>
     </div>
 </div>
+<div id="footer" th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
