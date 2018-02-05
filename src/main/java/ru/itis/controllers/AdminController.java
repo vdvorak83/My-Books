@@ -5,6 +5,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import ru.itis.models.Author;
+import ru.itis.models.Book;
+import ru.itis.repositories.AuthorsRepository;
+import ru.itis.repositories.BooksRepository;
 import ru.itis.services.*;
 
 @Controller
@@ -20,7 +24,13 @@ public class AdminController {
     private AuthorsService authorsService;
 
     @Autowired
+    private AuthorsRepository authorsRepository;
+
+    @Autowired
     private BooksService booksService;
+
+    @Autowired
+    private BooksRepository booksRepository;
 
     @GetMapping("/users")
     public String getUsersAdminPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
@@ -64,17 +74,49 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
-    @PostMapping("users/enable/{user-id}")
+    @PostMapping("/users/enable/{user-id}")
     public String enableUser(@PathVariable("user-id") Integer id) {
         adminService.setUserStatusEnabled(id);
 
         return "redirect:/admin/users";
     }
 
-    @PostMapping("users/ban/{user-id}")
+    @PostMapping("/users/ban/{user-id}")
     public String banUser(@PathVariable("user-id") Integer id) {
         adminService.setUserStatusBanned(id);
 
         return "redirect:/admin/users";
+    }
+
+    @GetMapping("/books/add")
+    public String getAddBookForm(ModelMap model, Authentication authentication) {
+        model.addAttribute(authenticationService.getUserByAuthentication(authentication));
+        model.addAttribute("authors", authorsService.getAllAuthors());
+        model.addAttribute("book", new Book());
+
+        return "edit/add-book";
+    }
+
+    @PostMapping("/books/add")
+    public String postAddBookForm(@ModelAttribute("book") Book book) {
+        booksRepository.save(book);
+
+        return "redirect:/admin/books";
+    }
+
+    @GetMapping("/authors/add")
+    public String getAddAuthorForm(ModelMap model, Authentication authentication) {
+        model.addAttribute(authenticationService.getUserByAuthentication(authentication));
+        model.addAttribute("authors", authorsService.getAllAuthors());
+        model.addAttribute("author", new Author());
+
+        return "edit/add-author";
+    }
+
+    @PostMapping("/authors/add")
+    public String postAddAuthorForm(@ModelAttribute("author") Author author) {
+        authorsRepository.save(author);
+
+        return "redirect:/admin/authors";
     }
 }

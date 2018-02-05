@@ -11,6 +11,7 @@
     <div th:if="${#lists.isEmpty(model.authorSearchResults) and #lists.isEmpty(model.bookSearchResults)}">
         <div class="text-center">
             <h2 style="color: gray;">No results by query <span th:text="${#httpServletRequest.getParameter('query')}"></span></h2>
+            <h4 style="color: gray;">Go to <a th:href="@{/books}">catalog</a>?</h4>
         </div>
     </div>
 
@@ -24,12 +25,7 @@
                 <a th:href="@{'/books/' + ${book.getId()}}"><img th:src="@{'/storage/' + ${book.getPhoto()}}"/></a>
                 <div class="caption">
                     <a th:href="@{'/books/' + ${book.getId()}}"><h3 th:text="${book.getTitle()}">Title</h3></a>
-                    <p th:text="${book.getDescription()}" class="flex-text text-muted" id="trunc">Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit.
-                        Consequatur optio ipsa fuga vel repudiandae impedit illum delectus nihil error animi nobis
-                        quaerat quidem, amet, praesentium aspernatur inventore numquam! Totam, dolorem inventore
-                        reprehenderit,
-                        culpa obcaecati!</p>
+                    <p th:text="${book.getDescription()}" class="flex-text text-muted">Lorem ipsum</p>
                 </div>
             </div>
         </div>
@@ -46,17 +42,11 @@
                 <div class="caption">
                     <a th:href="@{'/authors/' + ${author.getId()}}"><h3
                             th:text="${author.getName()} + ' ' + ${author.getLastName()}">Author</h3></a>
-                    <p th:text="${author.getAbout()}" class="flex-text text-muted" id="trunc">Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit.
-                        Consequatur optio ipsa fuga vel repudiandae impedit illum delectus nihil error animi nobis
-                        quaerat quidem, amet, praesentium aspernatur inventore numquam! Totam, dolorem inventore
-                        reprehenderit,
-                        culpa obcaecati!</p>
+                    <p th:text="${author.getAbout()}" class="flex-text text-muted">Lorem ipsum</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div id="footer" th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

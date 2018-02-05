@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:include="fragments/header :: head"></div>
-    <title>Author Test Page</title>
+    <title th:text="${model.author.getName()} + ' ' + ${model.author.getLastName()} + ' — biography, books, etc'"></title>
 </head>
 
 <body>
@@ -18,13 +18,14 @@
             <hr/>
             <h4>Information</h4>
             <span><b>Born: </b><span class="about" th:text="${model.author.getDateOfBirth()}"></span></span><br/>
-            <span><b>Died: </b><span class="about" th:text="${model.author.getDateOfDeath()}"></span></span>
+            <span th:if="${model.author.getDateOfDeath() != null}"><b>Died: </b><span class="about" th:text="${model.author.getDateOfDeath()}"></span></span>
+            <hr/>
             <h4>Biography</h4>
             <p th:text="${model.author.getAbout()}"></p>
             <hr/>
             <h4>Bibliography</h4>
             <div th:each="book : ${model.author.getBooks()}">
-                <a th:href="@{'books/' +${book.getId()}}"><p th:text="${book.getTitle()}"></p></a>
+                <a th:href="@{'/books/' +${book.getId()}}"><p th:text="${book.getTitle()}"></p></a>
             </div>
 
         </div>
@@ -32,8 +33,5 @@
         </div>
     </div>
 </div>
-
-<div id="footer" th:replace="fragments/footer :: footer"></div>
-
 </body>
 </html>
