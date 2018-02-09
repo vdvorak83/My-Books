@@ -21,6 +21,8 @@ public interface UsersRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findUserById(Integer id);
 
+    Optional<User> findUserByUuid(String uuid);
+
     @Deprecated
     void deleteUserById(Integer id);
 

@@ -2,10 +2,10 @@
 
 Website on Spring Boot with authentication system.
 
-To run, just clone it and...
+Before running application, create database and run SQL code in file 
 
 ```sh
-mvn spring-boot:run   (or run Application.java)
+mvn spring-boot:run (or run Application.java)
 ```
 
 ## Features:

@@ -5,4 +5,6 @@ import ru.itis.models.User;
 
 public interface RegistrationService {
     User register(UserRegistrationForm userRegistrationForm);
+
+    void confirm(String uuid);
 }

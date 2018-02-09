@@ -40,6 +40,9 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "uuid", unique = true)
+    private String uuid;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
